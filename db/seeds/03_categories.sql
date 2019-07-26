@@ -9,4 +9,4 @@ INSERT INTO categories (title, description)
 VALUES ('Video Games', 'Anything gaming related, no sports');
 
 INSERT INTO categories (title, description)
-VALUES ('Food', 'For all your hungry needs)
+VALUES ('Food', 'For all your hungry needs')
