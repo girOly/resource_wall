@@ -1,4 +1,3 @@
--- Users table seeds here (Example)
 DELETE FROM resources;
 
 ALTER SEQUENCE resources_id_seq RESTART WITH 1;
