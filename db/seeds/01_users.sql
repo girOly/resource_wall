@@ -1,4 +1,8 @@
 -- Users table seeds here (Example)
+DELETE FROM users;
+
+ALTER SEQUENCE users_id_seq RESTART WITH 1;
+
 INSERT INTO users (full_name, password, age, email) VALUES ('Alice Smith', 'password', TRUE, 'alicesmith@gmail.com');
 INSERT INTO users (full_name, password, age, email) VALUES ('John Michael', 'password', TRUE, 'johnmichael@gmail.com');
 INSERT INTO users (full_name, password, age, email) VALUES ('Lauren Ipsum', 'password', TRUE, 'laurenipsum@hotmail.com');
