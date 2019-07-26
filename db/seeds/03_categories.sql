@@ -10,3 +10,6 @@ VALUES ('Video Games', 'Anything gaming related, no sports', false);
 
 INSERT INTO categories (title, description, age)
 VALUES ('Tits', 'Anything tits related, no children', true);
+
+INSERT INTO categories (title, description, age)
+VALUES ('Food', 'For all your hungry needs', false);
