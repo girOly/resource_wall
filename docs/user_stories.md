@@ -1,42 +1,110 @@
 # User Stories
 
-## User should be able to save a resource
+Typical User: Instructor / Student
 
-as a user I want to save and customize an extenal url, because I want to 
-personalize and centralize my interests.
+## User should be able to save and customize a resource
 
-## User should be able to seach for saved resources
+as a Student I want to save and customize an external lecture, because I want to
+personalize and centralize my library of educational resources.
 
-as a user I want to be able to search for resources of other users with 
-parameters, because I want to broaden information access.
+Front-end Requirement: Save URL , Customize Saved URL
+
+User Experience Implementation: Input Form, Edit Button, Delete Button
+
+Back-end Implementation: URL Section in Database
+
+Feature: Save and Customize Resources
+
+## User should be able to search for saved resources
+
+as a Student I want to be able to search an educational library based on my
+parameters, because I want to facilitate my access for specific educational content.
+
+Front-end Requirement: Search Database, Parameter Specification
+
+User Experience Implementation: Search Form, Parameter Form
+
+Back-end Implementation: Search queries for SQL using specific parameters
+
+Feature: Search for a Saved Resource
+
+Parameter: Topics/Subjects specific to a given Resource
 
 ## User should be able to categorize resources
 
-as a user I want to be able to categorize my resources because I want to 
-organize and browse releveant resouces.
+as an Instructor I want to be able to categorize my educational resources because I want to
+access a specific resource to quickly lookup information while omitting unrelated resources.
+
+Front-end Requirement: Categorize resources, Parameter Specification
+
+User Experience Implementation: Select Topic/Category in Resource Creation, Edit Category
+
+Back-end Implementation: Categories section in Database + Linked with Resources
+
+Feature: Categorize a Resource
 
 ## User should be able to comment on any resource
 
-as a user I want be able to comment on resources because I want to share my
-opinion with the community.
+as a Student I want be able to comment on a specific lecture because I want to share my
+opinion with the community on a given topic, as well as ask questions on information that i
+did not properly grasp.
+
+Front-end Requirement: Post Comment route
+
+User Experience Implementation: Comment text-form
+
+Back-end Implementation: Comments section in Database + Linked with Resources
+
+Feature: Post a Comment
 
 ## User should be able to rate resources
 
-as a user I want rate resources because I want to be able to have a hand in
-the quality of submissions.
+as a Student I want to rate educational resources because I want to be able to have a hand in
+the quality of submissions and reduce the amount of poorly created resources.
+
+Front-end Requirement: Rating Form (1 to 5)
+
+User Experience Implementation: Rating selector with Icons
+
+Back-end Implementation: Rating Modifier in Query + Rating section in Database
+
+Feature: Rate a Resource
 
 ## User should be able to like resources
 
-as a user I want to be able to group resources by ones I enjoy because it 
-allows for a simple filter.
+as an Instructor I want to like a specific educational resource because I want to be able to like and pin
+higher quality submissions for efficient access later on.
+
+Front-end Requirement: Saves Resource in Liked Section
+
+User Experience Implementation: Pin Icon
+
+Back-end Implementation: Liked Section in Database
+
+Feature: Like a Resource
 
 ## User should be able to see their liked and created resources
 
-as a user I want to be able to see all my resources I've interacted with in 
-one place because I want to stay up to date with my past post/resources.
+as a Student I want to see my liked resources because I want to be able to quickly reference back to
+submissions that i have enjoyed.
+
+Front-end Requirement: Liked Category
+
+User Experience Implementation: Liked Tab in Resource View
+
+Back-end Implementation: Liked Section in Database
+
+Feature: View a liked Resource
 
 ## User should be able to register, login, logout and update profile information
 
-as a user I want be able to hold all of my options and personalizations
- in one place because it allows me to have an experience that follows me.
+As a User i want to be able to create my own personalized experience because i want to be able to access
+the website as an individual, with my own settings and information.
 
+Front-end Requirement: Login / Register Forms with Login and Log Out buttons
+
+User Experience Implementation: Easy to use Header forms/buttons to link to Login/Register/Log Out Routes
+
+Back-end Implementation: User Database
+
+Feature: Register/Login/LogOut and Update Profile
