@@ -48,8 +48,25 @@ db => {
       RETURNING *;
       `, [external_url, thumbnail_url, description, title, resource_id])
     .then(data => {
-      const allResources = data.rows;
-      res.json({ allResources });
+      const newResource = data.rows;
+      res.json({ newResource });
+    })
+    .catch(err => {
+      res.status(500).json({ error: err.message });
+    });
+  })
+  return router;
+},
+
+db => {
+  router.delete("/:id", (req, res) => {
+    const resource_id = req.params.id
+    db.query(`
+      DELETE FROM resources
+      WHERE id = $1;
+      `, [resource_id])
+    .then(() => {
+      res.redirect("/");
     })
     .catch(err => {
       res.status(500).json({ error: err.message });
