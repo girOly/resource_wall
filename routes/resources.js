@@ -9,8 +9,9 @@ const express = require("express");
 const router = express.Router();
 
 module.exports = db => {
-  router.get("/", (req, res) => {
-    db.query(`SELECT * FROM resources;`)
+  router.get("/:resource.id", (req, res) => {
+    const values = req.params
+    db.query(`SELECT id FROM resources WHERE id = $1;`, [values])
       .then(data => {
         const resources = data.rows;
         res.json({ resources });
