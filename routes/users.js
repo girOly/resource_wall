@@ -1,19 +1,17 @@
-/*
- * All routes for Users are defined here
- * Since this file is loaded in server.js into api/users,
- *   these routes are mounted onto /users
- * See: https://expressjs.com/en/guide/using-middleware.html#middleware.router
- */
-
 const express = require('express');
 const router  = express.Router();
 
 module.exports = (db) => {
-  router.get("/", (req, res) => {
-    db.query(`SELECT * FROM users;`)
+  router.get("/:id", (req, res) => {
+    const user_id = req.params
+    db.query(`
+    SELECT *
+    FROM users
+    WHERE id = $1;
+    `, [user_id])
       .then(data => {
-        const users = data.rows;
-        res.json({ users });
+        const userData = data.rows;
+        res.json({ userData });
       })
       .catch(err => {
         res
@@ -22,4 +20,27 @@ module.exports = (db) => {
       });
   });
   return router;
-};
+},
+
+(db) => {
+  router.get("/:id/liked", (req, res) => {
+    const user_id = req.params.id
+    db.query(`
+    SELECT resource_id, external_url, thumbnail_url, description, title
+    FROM liked
+    JOIN users ON user_id = users.id
+    JOIN resources ON resource_id = resources.id
+    WHERE users.id = $1;
+    `, [user_id])
+      .then(likedResourceInfo => {
+        const userData = likedResourceInfo.rows;
+        res.json({ userData });
+      })
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
+  });
+  return router;
+}
