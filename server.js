@@ -36,11 +36,13 @@ app.use(express.static("public"));
 const usersRoutes = require("./routes/users");
 const widgetsRoutes = require("./routes/widgets");
 const resourcesRoutes = require("./routes/resources");
+const loginRoutes = require("./routes/login");
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 app.use("/api/users", usersRoutes(db));
 app.use("/api/widgets", widgetsRoutes(db));
 app.use("/", resourcesRoutes(db));
+app.use("/login", loginRoutes(db))
 // Note: mount other resources here, using the same pattern above
 
 
@@ -50,6 +52,33 @@ app.use("/", resourcesRoutes(db));
 app.get("/", (req, res) => {
   res.render("index");
 });
+
+
+app.get("/login", (req, res) => {
+  res.render("../views/index")
+});
+
+app.post("/login", (req, res) => {
+  const {email, password} = req.body
+  db.query(`SELECT id, email, password
+  FROM users
+  WHERE email = $1
+  AND password = $2;
+  `, [email, password])
+    .then(data => {
+      if (data) {
+        res.redirect("/")
+      } else {
+
+      }
+    })
+    .catch(err => {
+      res.status(500).json({ error: err.message });
+  });
+
+
+
+})
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
