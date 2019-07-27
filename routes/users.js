@@ -4,7 +4,7 @@ const router  = express.Router();
 module.exports = (db) => {
   router.get("/:id", (req, res) => {
     const user_id = req.params
-    return db.query(`
+    db.query(`
     SELECT *
     FROM users
     WHERE id = $1;
@@ -25,7 +25,7 @@ module.exports = (db) => {
 (db) => {
   router.get("/:id/liked", (req, res) => {
     const user_id = req.params.id
-    return db.query(`
+    db.query(`
     SELECT resource_id, external_url, thumbnail_url, description, title
     FROM liked
     JOIN users ON user_id = users.id

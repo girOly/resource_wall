@@ -8,7 +8,7 @@ router.get("/", (req, res) => {
 
 router.post("/", (req, res) => {
   const {email, password, full_name} = req.body
-  return db.query(`
+  db.query(`
   SELECT email
   FROM users
   WHERE email = $1;
@@ -28,4 +28,7 @@ router.post("/", (req, res) => {
     })
     .catch(err => {
       res.status(500).json({ error: err.message });
+  })
+)
+return router
 })

@@ -7,7 +7,7 @@ router.get("/", (req, res) => {
 
 router.post("/", (req, res) => {
   const {email, password} = req.body
-  return db.query(`SELECT id, email, password
+  db.query(`SELECT id, email, password
   FROM users
   WHERE email = $1
   AND password = $2;
@@ -22,7 +22,7 @@ router.post("/", (req, res) => {
     .catch(err => {
       res.status(500).json({ error: err.message });
   });
-
+  return router
 })
 
 
