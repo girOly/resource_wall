@@ -42,7 +42,7 @@ const loginRoutes = require("./routes/login");
 app.use("/api/users", usersRoutes(db));
 app.use("/api/widgets", widgetsRoutes(db));
 app.use("/", resourcesRoutes(db));
-app.use("/login", loginRoutes(db))
+app.use("/login", loginRoutes)
 // Note: mount other resources here, using the same pattern above
 
 
@@ -52,33 +52,6 @@ app.use("/login", loginRoutes(db))
 app.get("/", (req, res) => {
   res.render("index");
 });
-
-
-app.get("/login", (req, res) => {
-  res.render("../views/index")
-});
-
-app.post("/login", (req, res) => {
-  const {email, password} = req.body
-  db.query(`SELECT id, email, password
-  FROM users
-  WHERE email = $1
-  AND password = $2;
-  `, [email, password])
-    .then(data => {
-      if (data) {
-        res.redirect("/")
-      } else {
-
-      }
-    })
-    .catch(err => {
-      res.status(500).json({ error: err.message });
-  });
-
-
-
-})
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
