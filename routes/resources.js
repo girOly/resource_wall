@@ -11,13 +11,17 @@ module.exports = db => {
     SELECT *
     FROM resources WHERE id = $1;
     `, [resource_id])
-      .then(data => {
-        const resource = data.rows[0];
-        res.render("resource", resource);
-      })
-      .catch(err => {
-        res.status(500).json({ error: err.message });
-      });
+    .then(data => {
+      const resource = data.rows[0];
+      res.render("resource", resource);
+    })
+    .catch(err => {
+      res.status(500).json({ error: err.message });
+    });
+  });
+
+  router.get("/new", (req, res) => {
+    res.render("new")
   });
 
   router.get("/", (req, res) => {
@@ -28,7 +32,8 @@ module.exports = db => {
       `)
     .then(data => {
       const allResources = data.rows;
-      res.json({ allResources });
+      console.log(allResources)
+      res.render("home",{allResources});
     })
     .catch(err => {
       res.status(500).json({ error: err.message });
@@ -67,9 +72,6 @@ module.exports = db => {
     });
   })
 
-  router.get("/new", (req, res) => {
-    res.render("../views/new")
-  });
 
   router.post("/new", (req, res) => {
     const { external_url, thumbnail_url, description, title } = req.body
