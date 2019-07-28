@@ -10,6 +10,8 @@ const sass       = require("node-sass-middleware");
 const methodOverride = require('method-override')
 const app        = express();
 const morgan     = require('morgan');
+const cookieSession = require('cookie-session');
+
 
 // PG database client/connection setup
 const { Pool } = require('pg');
@@ -47,9 +49,6 @@ app.use("/widgets", widgetsRoutes(db));
 app.use("/register", registerRoutes(db));
 app.use("/login", loginRoute(db));
 app.use("/", resourcesRoutes(db));
-
-// Note: mount other resources here, using the same pattern above
-
 
 
 app.listen(PORT, () => {
