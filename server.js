@@ -36,33 +36,29 @@ app.use(express.static("public"));
 const usersRoutes = require("./routes/users");
 const widgetsRoutes = require("./routes/widgets");
 const resourcesRoutes = require("./routes/resources");
-const loginRoutes = require("./routes/login");
-const registerRoutes = require("./routes/register")
-const newRoutes = require("./routes/new")
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 app.use("/api/users", usersRoutes(db));
 app.use("/api/widgets", widgetsRoutes(db));
 app.use("/", resourcesRoutes(db));
-app.use("/login", loginRoutes(db))
-// might need db for register routes?
-app.use("/register", registerRoutes(db))
 // Note: mount other resources here, using the same pattern above
 
 
 // Home page
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
+
+// Hardcoded Routes for HTML - to be removed
 app.get("/", (req, res) => {
   res.render("index");
 });
-// hardcoded route ----------- to be removed
-// app.get("/register", (req, res) => {
-//   res.render("register");
-// });
-//
+
+app.get("/register", (req, res) => {
+  res.render("register");
+});
+
 // app.get("/login", (req, res) => {
-//   res.render("login");
+//   res.render("./views/login");
 // });
 
 app.listen(PORT, () => {

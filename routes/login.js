@@ -1,13 +1,13 @@
 const express = require("express");
 const router = express.Router();
 
-<<<<<<< HEAD
+// <<<<<<< HEAD
 router.get("/", (req, res) => {
   res.render("../views/login")
-=======
+// =======
 router.get("/login", (req, res) => {
   res.render("./views/login")
->>>>>>> features/login
+// >>>>>>> features/login
 });
 
 router.post("/", (req, res) => {
