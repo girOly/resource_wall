@@ -7,6 +7,7 @@ const ENV        = process.env.ENV || "development";
 const express    = require("express");
 const bodyParser = require("body-parser");
 const sass       = require("node-sass-middleware");
+const methodOverride = require('method-override')
 const app        = express();
 const morgan     = require('morgan');
 
@@ -36,6 +37,7 @@ app.use(express.static("public"));
 const usersRoutes = require("./routes/users");
 const widgetsRoutes = require("./routes/widgets");
 const resourcesRoutes = require("./routes/resources");
+<<<<<<< HEAD
 const registerRoutes = require("./routes/register");
 const loginRoute = require("./routes/login");
 // Mount all resource routes
@@ -49,6 +51,32 @@ app.use("/", resourcesRoutes(db));
 
 // Note: mount other resources here, using the same pattern above
 
+=======
+// Mount all resource routes
+// Note: Feel free to replace the example routes below with your own
+app.use("/api/users", usersRoutes(db));
+app.use("/api/widgets", widgetsRoutes(db));
+app.use("/", resourcesRoutes(db));
+// Note: mount other resources here, using the same pattern above
+
+
+// Home page
+// Warning: avoid creating more routes in this file!
+// Separate them into separate routes files (see above).
+//
+// // Hardcoded Routes for HTML - to be removed
+// app.get("/", (req, res) => {
+//   res.render("index");
+// });
+//
+// app.get("/register", (req, res) => {
+//   res.render("register");
+// });
+//
+// app.get("/login", (req, res) => {
+//   res.render("./views/login");
+// });
+>>>>>>> feature/routes
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
