@@ -12,8 +12,8 @@ module.exports = db => {
     FROM resources WHERE id = $1;
     `, [resource_id])
       .then(data => {
-        const resource = data.rows;
-        res.json({ resource });
+        const resource = data.rows[0];
+        res.render("resource", resource);
       })
       .catch(err => {
         res.status(500).json({ error: err.message });

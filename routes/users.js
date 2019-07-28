@@ -11,8 +11,6 @@ module.exports = (db) => {
     `, [user_id])
       .then(data => {
         const userData = data.rows[0];
-        console.log({userData})
-        // res.json({ userData });
         res.render("users", userData)
       })
       .catch(err => {
