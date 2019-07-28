@@ -3,15 +3,17 @@ const router  = express.Router();
 
 module.exports = (db) => {
   router.get("/:id", (req, res) => {
-    const user_id = req.params
+    const user_id = req.params.id
     db.query(`
-    SELECT *
+    SELECT thumbnail_url, full_name, bio
     FROM users
     WHERE id = $1;
     `, [user_id])
       .then(data => {
-        const userData = data.rows;
-        res.json({ userData });
+        const userData = data.rows[0];
+        console.log({userData})
+        // res.json({ userData });
+        res.render("users", userData)
       })
       .catch(err => {
         res
