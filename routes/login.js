@@ -1,13 +1,10 @@
 const express = require("express");
 const router = express.Router();
 
-// <<<<<<< HEAD
+
+module.exports = db => {
 router.get("/", (req, res) => {
-  res.render("../views/login")
-// =======
-router.get("/login", (req, res) => {
-  res.render("./views/login")
-// >>>>>>> features/login
+  res.render("login")
 });
 
 router.post("/", (req, res) => {
@@ -27,8 +24,6 @@ router.post("/", (req, res) => {
     .catch(err => {
       res.status(500).json({ error: err.message });
   });
-  return router
 })
-
-
-module.exports = router
+return router
+}
