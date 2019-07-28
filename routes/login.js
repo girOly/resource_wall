@@ -16,6 +16,7 @@ router.post("/", (req, res) => {
   `, [email, password])
     .then(data => {
       if (data) {
+        req.session.user_id = data.id
         res.redirect("/")
       } else {
 // try again message

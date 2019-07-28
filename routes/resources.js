@@ -7,6 +7,7 @@ router.use(methodOverride('_method'))
 module.exports = db => {
   router.get("/:id", (req, res) => {
     const resource_id = req.params.id
+    const userID = req.session['user_id'];
     db.query(`
     SELECT *
     FROM resources WHERE id = $1;
@@ -21,6 +22,7 @@ module.exports = db => {
   });
 
   router.get("/new", (req, res) => {
+    const userID = req.session['user_id'];
     res.render("new")
   });
 
@@ -32,7 +34,7 @@ module.exports = db => {
       `)
     .then(data => {
       const allResources = data.rows;
-      console.log(allResources)
+      const userID = req.session['user_id'];
       res.render("home",{allResources});
     })
     .catch(err => {

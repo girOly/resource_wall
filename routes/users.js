@@ -11,6 +11,7 @@ module.exports = (db) => {
     `, [user_id])
       .then(data => {
         const userData = data.rows[0];
+        const userID = req.session['user_id'];
         res.render("users", userData)
       })
       .catch(err => {
@@ -31,6 +32,7 @@ module.exports = (db) => {
     `, [user_id])
       .then(likedResourceInfo => {
         const userData = likedResourceInfo.rows;
+        const userID = req.session['user_id'];
         res.json({ userData });
       })
       .catch(err => {
