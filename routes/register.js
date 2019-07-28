@@ -1,12 +1,14 @@
 const express = require("express");
 const router = express.Router();
 
+module.exports = db => {
+  router.get("/", (req, res) => {
+    res.render("../views/register")
+  });
+return router;
+},
 
-router.get("/", (req, res) => {
-  res.render("../views/register")
-  return router;
-}),
-
+db => {
 router.post("/", (req, res) => {
   const {email, password, full_name} = req.body
   db.query(`
@@ -33,3 +35,4 @@ router.post("/", (req, res) => {
 )
 return router
 })
+}
