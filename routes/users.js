@@ -19,10 +19,7 @@ module.exports = (db) => {
           .json({ error: err.message });
       });
   });
-  return router;
-},
 
-(db) => {
   router.get("/:id/liked", (req, res) => {
     const user_id = req.params.id
     db.query(`
