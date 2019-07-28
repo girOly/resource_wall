@@ -5,5 +5,7 @@ CREATE TABLE users (
   full_name TEXT,
   password TEXT,
   age BOOLEAN,
-  email TEXT
+  email TEXT,
+  bio TEXT,
+  thumbnail_url TEXT
 );
