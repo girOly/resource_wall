@@ -50,8 +50,7 @@ module.exports = db => {
       RETURNING *;
       `, [external_url, thumbnail_url, description, title, resource_id])
     .then(data => {
-      const newResource = data.rows;
-      res.json({ newResource });
+      res.redirect(`/${resource_id}`);
     })
     .catch(err => {
       res.status(500).json({ error: err.message });
@@ -77,10 +76,12 @@ module.exports = db => {
     const { external_url, thumbnail_url, description, title } = req.body
     db.query(`
     INSERT INTO resources (external_url, thumbnail_url, description, title)
-    VALUES ($1, $2, $3, $4);
+    VALUES ($1, $2, $3, $4)
+    RETURNING *;
     `, [external_url, thumbnail_url, description, title])
-    .then(() => {
-      res.redirect("/")
+    .then((data) => {
+      const newRes = data.rows[0]
+      res.redirect(`/${newRes.id}`)
     })
     .catch(err => {
       res.status(500).json({ error: err.message });
