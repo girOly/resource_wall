@@ -4,7 +4,8 @@ const router = express.Router();
 
 router.get("/", (req, res) => {
   res.render("../views/register")
-});
+  return router;
+}),
 
 router.post("/", (req, res) => {
   const {email, password, full_name} = req.body
