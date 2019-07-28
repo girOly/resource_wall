@@ -1,5 +1,8 @@
 const express = require("express");
+const methodOverride = require('method-override');
 const router = express.Router();
+
+router.use(methodOverride('_method'))
 
 module.exports = db => {
   router.get("/:id", (req, res) => {
