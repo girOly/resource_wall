@@ -12,10 +12,21 @@
   <section id="resource-container">
     <% for(let res of allResources) { %>
   <article class ="resource-box">
-          <h3><%= res.title %></h1>
+          <!-- <h3><%= res.title %></h1>
           <p><%= res.description %></p>
           <p><%= res.thumbnail_url %></p>
-            <img src= "<%= res.external_url %>">
+            <img src= "<%= res.external_url %>"> -->
+            <div class="card-deck">
+  <div class="card">
+    <img src="<%= res.external_url %>" class="card-img-top">
+    <div class="card-body">
+      <h5 class="card-title"><%= res.title %></h5>
+      <p class="card-text"><%= res.description %></p>
+    </div>
+    <div class="card-footer">
+      <small class="text-muted">View Full Post..</small>
+    </div>
+  </div>
   </article>
   <% } %>
 </section>
