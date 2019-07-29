@@ -16,12 +16,14 @@ router.post("/", (req, res) => {
   AND password = $2;
   `, [email, password])
     .then(data => {
-      if (data) {
-        console.log(data)
-        req.session.user_id = data.id
+      if (data.rows[0]) {
+        console.log(data.rows)
+        req.session.user_id = data.rows[0].id
         res.redirect("/")
       } else {
-// try again message
+        res.send('shits broken')
+//         res.redirect("/login")
+// // try again message
       }
     })
     .catch(err => {
