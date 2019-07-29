@@ -8,7 +8,6 @@ module.exports = db => {
 
   router.post("/", (req, res) => {
     const { email, password, full_name } = req.body
-      console.log(req.body)
     db.query(`
     SELECT email
     FROM users
