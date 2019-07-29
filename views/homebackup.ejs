@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>Profile</title>
     <link rel="stylesheet" href="css/home.css" type="text/css">
+    <link rel="icon" href="data:;base64,=">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   </head>
   <body>
@@ -12,11 +13,21 @@
   <section id="resource-container">
     <% for(let res of allResources) { %>
   <article class ="resource-box">
-          <h3><%= res.title %></h1>
+          <!-- <h3><%= res.title %></h1>
           <p><%= res.description %></p>
           <p><%= res.thumbnail_url %></p>
-            <img src= "<%= res.external_url %>">
-
+            <img src= "<%= res.external_url %>"> -->
+            <div class="card-deck">
+  <div class="card">
+    <img src="<%= res.external_url %>" class="card-img-top">
+    <div class="card-body">
+      <h5 class="card-title"><%= res.title %></h5>
+      <p class="card-text"><%= res.description %></p>
+    </div>
+    <div class="card-footer">
+      <small class="text-muted">View Full Post..</small>
+    </div>
+  </div>
   </article>
   <% } %>
 </section>

@@ -8,6 +8,7 @@ module.exports = db => {
 
   router.post("/", (req, res) => {
     const { email, password, full_name } = req.body
+      console.log(req.body)
     db.query(`
     SELECT email
     FROM users
@@ -18,7 +19,7 @@ module.exports = db => {
         //return email already in use try again please
       }
       })
-      .done(db.query(`
+      .then(db.query(`
       INSERT INTO users (email, password, full_name)
       VALUES ($1, $2, $3)
       RETURNING *;
