@@ -1,21 +1,34 @@
-.resourcebox {
+.resource-box {
+	width: 20%;
 	display: flex;
   justify-content: space-around;
-	padding: 10px;
-	border: 5px solid black;
+	margin: 10px;
+	border: 2px solid black;
+	flex-direction: column;
+	border-radius: 15px;
 }
 
 
-.resourcebox	img {
+.resource-box	img {
 		flex-wrap: nowrap;
 		width: 10%;
 		float: left;
 		margin: 5%;
 			}
 
-.resourcebox	h3 {
+.resource-box	h3 {
 	width: 10%;
 	margin-left: 1.66%;
 	border-bottom: 2px solid #f1f1f1;
 	padding-bottom: 10px
 		}
+
+
+body * {
+	border: 1px solid black;
+}
+
+#resource-container {
+	justify-content: flex-start;
+	display: flex;
+}
