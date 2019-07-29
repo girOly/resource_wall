@@ -58,7 +58,6 @@ app.use((req, res, next) => {
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
 const usersRoutes = require("./routes/users");
-const widgetsRoutes = require("./routes/widgets");
 const resourcesRoutes = require("./routes/resources");
 const registerRoutes = require("./routes/register");
 const loginRoute = require("./routes/login");
@@ -66,7 +65,6 @@ const loginRoute = require("./routes/login");
 // Note: Feel free to replace the example routes below with your own
 
 app.use("/users", usersRoutes(db));
-app.use("/widgets", widgetsRoutes(db));
 app.use("/register", registerRoutes(db));
 app.use("/login", loginRoute(db));
 app.get('/logout', (req, res) => {
