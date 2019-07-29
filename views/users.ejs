@@ -9,9 +9,10 @@
   </head>
 
   <body>
-<h1>Profile page for: <%= full_name %></h1>
-<h2>Here is my bio: <%= bio %></h2>
-<h2>This is my profile picture URL: <%= thumbnail_url %></h2>
+    <img src="<%= userData.thumbnail_url %>">
+<h1>Profile page for: <%= userData.full_name %></h1>
+<p>Here is my bio: <%= userData.bio %></p>
+<h2>This is my profile picture URL: <%= userData.thumbnail_url %></h2>
 <div>
 
 </div>
