@@ -5,9 +5,15 @@ const router = express.Router();
 router.use(methodOverride('_method'))
 
 module.exports = db => {
+  router.get("/new", (req, res) => {
+    if (req.user) {
+      console.log(req.user)
+    res.render("new", { user:req.user })
+    }
+  });
+
   router.get("/:id", (req, res) => {
     const resource_id = req.params.id
-    const userID = req.session['user_id'];
     db.query(`
     SELECT *
     FROM resources WHERE id = $1;
@@ -21,10 +27,6 @@ module.exports = db => {
     });
   });
 
-  router.get("/new", (req, res) => {
-    ;
-    res.render("new", { user:req.user })
-  });
 
   router.get("/", (req, res) => {
     db.query(`
