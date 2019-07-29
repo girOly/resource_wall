@@ -3,7 +3,7 @@ const router = express.Router();
 
 module.exports = db => {
   router.get("/", (req, res) => {
-    res.render("register")
+    res.render("register", {user:req.user})
   });
 
   router.post("/", (req, res) => {
