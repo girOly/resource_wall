@@ -14,7 +14,7 @@ module.exports = db => {
     `, [resource_id])
     .then(data => {
       const resource = data.rows[0];
-      res.render("resource", resource);
+      res.render("resource",{ resource, user: req.user });
     })
     .catch(err => {
       res.status(500).json({ error: err.message });
@@ -22,8 +22,8 @@ module.exports = db => {
   });
 
   router.get("/new", (req, res) => {
-    const userID = req.session['user_id'];
-    res.render("new")
+    ;
+    res.render("new", { user:req.user })
   });
 
   router.get("/", (req, res) => {
@@ -34,8 +34,7 @@ module.exports = db => {
       `)
     .then(data => {
       const allResources = data.rows;
-      const userID = req.session['user_id'];
-      res.render("home",{allResources});
+      res.render("home",{allResources, user:req.user});
     })
     .catch(err => {
       res.status(500).json({ error: err.message });
