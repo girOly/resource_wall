@@ -37,6 +37,23 @@ app.use("/styles", sass({
   outputStyle: 'expanded'
 }));
 app.use(express.static("public"));
+app.use((req, res, next) => {
+  if (!req.session.user_id) {
+    return next();
+  }
+  const userQuery = `
+  SELECT *
+  FROM users
+  WHERE id = ${req.session.user_id}
+  `
+  db.query(userQuery)
+  .then((data) => {
+    const user = data.rows[0]
+    req.user = user;
+    next();
+    })
+  .catch((err) => next(err))
+});
 
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
@@ -52,6 +69,13 @@ app.use("/users", usersRoutes(db));
 app.use("/widgets", widgetsRoutes(db));
 app.use("/register", registerRoutes(db));
 app.use("/login", loginRoute(db));
+app.get('/logout', (req, res) => {
+  res.clearCookie('session');
+  res.redirect('login');
+});
+
+
+
 app.use("/", resourcesRoutes(db));
 
 
