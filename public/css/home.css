@@ -2,32 +2,36 @@
 	width: 20%;
 	display: flex;
   justify-content: space-around;
-	margin: 10px;
 	border: 2px solid black;
 	flex-direction: column;
 	border-radius: 15px;
+	margin: 10px;
 }
 
+.card-deck {
+	height: 100%;
+}
 
 .resource-box	img {
 		flex-wrap: nowrap;
-		width: 75%;
 		float: left;
-		margin: 5%;
+		margin: 0 auto;
 			}
 
 .resource-box	.card-title {
 		text-transform: capitalize;
-		
-
 		}
 
+body {
+		background-image: url("64f67156.png");
+}
 
 body * {
-	border: 1px solid black;
+	/* border: 1px solid black; */
 }
 
 #resource-container {
-	justify-content: flex-start;
+	justify-content: center;
 	display: flex;
+	flex-wrap: wrap;
 }
