@@ -8,9 +8,11 @@
   </head>
 
   <body>
-<h1>resource page for: <%= title %></h1>
-<h2>Here is the description: <%= description %></h2>
-<h2>This is the picture URL: <%= thumbnail_url %></h2>
-<h2>This is the resource URL: <%= external_url %></h2>
-
+<h1>resource page for: <%= resource.title %></h1>
+<h2>Here is the description: <%= resource.description %></h2>
+<h2>This is the picture URL: <%= resource.thumbnail_url %></h2>
+<h2>This is the resource URL: <%= resource.external_url %></h2>
+<% if (user) {%>
+  <h2>This is the resource URL: <%= user.email %></h2>
+  <% } %>
   </body>
