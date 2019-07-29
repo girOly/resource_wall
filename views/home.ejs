@@ -7,14 +7,17 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   </head>
   <body>
-    <div>
+  <% include partials/_header %>
+    <!-- Will be Implemented inside of a Individual Boxes -->
+  <div>
+    <span class ="resourcebox">
       <% for(let res of allResources) { %>
-        <div>
           <h3><%= res.title %></h1>
-          <h3><%= res.description %></h4>
-          <h4><%= res.thumbnail_url %></h4>
+          <p><%= res.description %></p>
+          <p><%= res.thumbnail_url %></p>
             <img src= "<%= res.external_url %>">
-        </div>
+      </span>
       <% } %>
-    </div>
-    </body>
+  </div>
+
+  </body>
