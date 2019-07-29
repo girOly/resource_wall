@@ -25,7 +25,7 @@ module.exports = db => {
       RETURNING *;
     ` , [email, password, full_name])
       .then(accInfo => {
-        res.redirect("/")
+        res.redirect("login")
       })
       .catch(err => {
         res.status(500).json({ error: err.message });
