@@ -67,15 +67,15 @@ module.exports = (db) => {
   router.get("/:id/liked", (req, res) => {
     const user_id = req.params.id
     db.query(`
-    SELECT resource_id, external_url, thumbnail_url, description, title
+    SELECT resource_id, resources.external_url, resources.thumbnail_url, description, title
     FROM liked
     JOIN users ON user_id = users.id
     JOIN resources ON resource_id = resources.id
     WHERE users.id = $1;
     `, [user_id])
-      .then(likedResourceInfo => {
-        const userData = likedResourceInfo.rows;
-        res.json({ userData, user:req.user });
+      .then(data => {
+        const allResources = data.rows;
+        res.render("resource-liked", { allResources, user:req.user });
       })
       .catch(err => {
         res
