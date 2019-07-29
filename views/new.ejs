@@ -1,1 +1,30 @@
-<!-- this is the page with forums where you can create a new resource -->
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Profile</title>
+    <link rel="icon" href="data:;base64,=">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  </head>
+  <body>
+      <% if (user) {%>
+        <div>make your new resource <%= user.full_name %></div>
+        <% } %>
+        <div>
+        <form action="/new" method="POST">
+          <div>
+            <input name="title" class="form-control" placeholder="Title">
+          </div>
+          <div>
+            <input name= "description" class="form-control" placeholder="Description" required>
+          </div>
+          <div>
+              <input name= "external_url" class="form-control" placeholder="Url" required>
+          </div>
+          <div>
+              <input name= "thumbnail_url" class="form-control" placeholder="Image" required>
+          </div>
+          <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit">Add your resource</button>
+        </form>
+      </div>
+</body>
