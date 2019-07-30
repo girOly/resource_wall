@@ -2,7 +2,7 @@
 	width: 20%;
 	display: flex;
   justify-content: space-around;
-	border: 2px solid black;
+	border: 5px solid black;
 	flex-direction: column;
 	border-radius: 15px;
 	margin: 10px;
@@ -16,6 +16,7 @@
 		flex-wrap: nowrap;
 		float: left;
 		margin: 0 auto;
+
 			}
 
 .resource-box	.card-title {
@@ -34,4 +35,15 @@ body * {
 	justify-content: center;
 	display: flex;
 	flex-wrap: wrap;
+}
+
+.resource-box .card-footer {
+	text-align: center;
+	text-decoration: underline;
+	background-color: rgba(50, 115, 220, 0.1);
+}
+
+.img-background {
+	height: 400px;
+	width: 100%;
 }
