@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>Profile</title>
+    <title>Resource</title>
     <link rel="icon" href="data:;base64,=">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   </head>
@@ -13,6 +13,6 @@
 <h2>This is the picture URL: <%= resource.thumbnail_url %></h2>
 <h2>This is the resource URL: <%= resource.external_url %></h2>
 <% if (user) {%>
-  <h2>This is the you: <%= user.full_name %></h2>
+  <h2>This is you: <%= user.full_name %></h2>
   <% } %>
   </body>
