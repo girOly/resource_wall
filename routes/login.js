@@ -8,7 +8,7 @@ router.get("/", (req, res) => {
 });
 
 router.post("/", (req, res) => {
-  const {email, password} = req.body
+  const { email, password } = req.body
   db.query(`SELECT id, email, password
   FROM users
   WHERE email = $1

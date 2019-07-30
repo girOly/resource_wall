@@ -18,6 +18,7 @@ module.exports = (db) => {
 
   router.get("/:id/edit", (req, res) => {
     const user_id = req.params.id
+    // TypeError: Cannot read property 'id' of undefined
     if (req.user.id === user_id) {
       db.query(`
       SELECT thumbnail_url, full_name, bio
