@@ -132,10 +132,10 @@ router.put("/:id/edit", (req, res) => {
   router.post("/new", (req, res) => {
     const { external_url, thumbnail_url, description, title } = req.body
     db.query(`
-    INSERT INTO resources (external_url, thumbnail_url, description, title)
-    VALUES ($1, $2, $3, $4)
+    INSERT INTO resources (external_url, thumbnail_url, description, title, created_by)
+    VALUES ($1, $2, $3, $4, $5)
     RETURNING *;
-    `, [external_url, thumbnail_url, description, title])
+    `, [external_url, thumbnail_url, description, title, req.user.id])
     .then((data) => {
       const resource = data.rows[0]
       res.redirect(`/${resource.id}`)
