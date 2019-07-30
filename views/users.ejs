@@ -3,16 +3,24 @@
     <meta charset="utf-8">
     <title>Profile</title>
     <link rel="icon" href="data:;base64,=">
-    <link rel="stylesheet" href="/css/users.css">
+    <link rel="stylesheet" href="/css/users.css" type="text/css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   </head>
 
   <body>
-    <article class="userinfo">
+      <% include partials/_header %>
+      <container class="profile_content">
+        <container class="full_name">
+          <h1><%= userData.full_name %></h1>
+        </container>
+    <container class="profile_pic">
     <img src="<%= userData.thumbnail_url %>">
-<h1>Profile page for: <%= userData.full_name %></h1>
-<p>Here is my bio: <%= userData.bio %></p>
-<h2>This is my profile picture URL: <%= userData.thumbnail_url %></h2>
+  </container>
+  <!-- <container class="profile_bio">
+    <p>Here is my bio: <%= userData.bio %></p>
+  </container> -->
 </article>
+<container class="profile_bio">
 <p>
   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ullamcorper, nulla rutrum malesuada varius, enim ex tempor lacus, pharetra laoreet orci massa ac eros. Nam lacinia ac nisi sit amet molestie. Donec vitae vestibulum magna, a egestas lectus. Fusce mattis sem ante, ut bibendum magna laoreet vel. Etiam commodo pulvinar orci ac luctus. Fusce pharetra est tellus, a cursus purus bibendum pellentesque. Morbi non ipsum mi.
 
@@ -20,5 +28,6 @@
 
   In id arcu nec velit auctor dapibus ut eget dolor. Vivamus finibus ante sit amet mi rutrum, sed consectetur purus porttitor. Aliquam eu enim vel diam commodo tincidunt. Donec ac est facilisis, finibus velit a, suscipit est. Proin a nunc et justo efficitur laoreet id congue elit. Suspendisse sed risus eget velit ornare condimentum non in nisi. Nulla ex arcu, faucibus ac iaculis nec, interdum dapibus massa. Phasellus suscipit lacus eros, sit amet faucibus mauris rhoncus a.
 </p>
-
+</container>
+</container>
   </body>
