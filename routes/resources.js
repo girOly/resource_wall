@@ -12,6 +12,60 @@ module.exports = db => {
     }
   });
 
+router.put("/:id/edit", (req, res) => {
+  const resId = req.params.id
+    // will need to consolelog req.body when put button works
+  const resChanges = req.body
+  const findRes = `
+    SELECT *
+    FROM resources WHERE id = $1;
+    `
+  const updateQuery = `
+    UPDATE resources
+    SET external_url = $1, thumbnail_url = $2, description = $3, title = $4
+    WHERE id = $5
+    RETURNING *;
+    `
+  db.query(findRes, [resId])
+  .then((data) => {
+    if (req.user.id === data.rows[0].created_by) {
+      db.query(updateQuery, [resChanges])
+      .then((resource) => {
+        res.render(`resource`, { resource:resource.rows[0], user:req.user })
+      })
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
+    } else {
+      res.redirect(`/${resId}`)
+    }
+  })
+})
+
+  router.get("/:id/edit", (req, res) => {
+    const user_id = req.user.id
+    const resource_id = req.params.id
+    db.query(`
+    SELECT *
+    FROM resources
+    WHERE id = $1;
+    `, [resource_id])
+    .then((resource) => {
+      if (user_id !== resource.rows[0].created_by) {
+        res.redirect(`/${resource_id}`)
+      } else {
+        res.render(`resources-edit`, { user:req.user, resource:resource.rows[0] })
+      }
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message });
+    });
+  });
+
   router.get("/:id", (req, res) => {
     const resource_id = req.params.id
     db.query(`
@@ -83,8 +137,8 @@ module.exports = db => {
     RETURNING *;
     `, [external_url, thumbnail_url, description, title])
     .then((data) => {
-      const newRes = data.rows[0]
-      res.redirect(`/${newRes.id}`)
+      const resource = data.rows[0]
+      res.redirect(`/${resource.id}`)
     })
     .catch(err => {
       res.status(500).json({ error: err.message });
