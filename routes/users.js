@@ -7,10 +7,10 @@ router.put("/edit", (req, res) => {
 const profileChanges = req.body
 const updateQuery = `
   UPDATE resources
-  SET external_url = $1, thumbnail_url = $2, bio = $3, title = $4
-  WHERE id = $5;
+  SET thumbnail_url = $1, bio = $2, title = $3
+  WHERE id = $4;
   `
-  db.query(updateQuery, [profileChanges])
+  db.query(updateQuery, [profileChanges, req.user.id])
   .then(() => {
     res.redirect(`/${req.user.id}`)
   })
