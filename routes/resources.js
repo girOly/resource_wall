@@ -31,7 +31,7 @@ router.put("/:id/edit", (req, res) => {
     if (req.user.id === data.rows[0].created_by) {
       db.query(updateQuery, [resChanges])
       .then((resource) => {
-        res.render(`/${resId}`, {resource, user:req.user})
+        res.render(`resource`, { resource:resource.rows[0], user:req.user })
       })
       .catch(err => {
         res
@@ -45,14 +45,19 @@ router.put("/:id/edit", (req, res) => {
 })
 
   router.get("/:id/edit", (req, res) => {
-  const user_id = req.user.id
+    const user_id = req.user.id
+    const resource_id = req.params.id
     db.query(`
-    SELECT thumbnail_url, full_name, bio
-    FROM users
+    SELECT *
+    FROM resources
     WHERE id = $1;
-    `, [user_id])
-    .then(() => {
-        res.render("users-edit", { user:req.user })
+    `, [resource_id])
+    .then((resource) => {
+      if (user_id !== resource.rows[0].created_by) {
+        res.redirect(`/${resource_id}`)
+      } else {
+        res.render(`resources-edit`, { user:req.user, resource:resource.rows[0] })
+      }
     })
     .catch(err => {
       res
