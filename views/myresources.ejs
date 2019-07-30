@@ -29,10 +29,10 @@
     <div class="card-footer">
       <a class="card-foot" href=" <%= res.res_id %>" >View Full Post..</a>
   </div>
-  <form method="GET" action="/<%= res.res_id %>/edit">
+  <form method="GET" action="/resources/<%= res.res_id %>/edit">
   <button type="submit" class="btn btn-dark">Edit</button>
   </form>
-  <form method="POST" action="/<%= res.res_id %>?_method=DELETE">
+  <form method="POST" action="/resources/<%= res.res_id %>?_method=DELETE">
     <button type="submit" class="btn btn-danger">Delete</button>
   </form>
   </div>

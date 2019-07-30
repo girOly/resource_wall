@@ -14,6 +14,7 @@ router.put("/:id/edit", (req, res) => {
   const resId = req.params.id
     // will need to consolelog req.body when put button works
   const resChanges = req.body
+  console.log(resChanges);
   const findRes = `
     SELECT *
     FROM resources WHERE id = $1;
@@ -111,7 +112,7 @@ router.put("/:id/edit", (req, res) => {
   })
 
 
-  router.post("/new", (req, res) => {
+  router.post("/resources/new", (req, res) => {
     const { external_url, thumbnail_url, description, title } = req.body
     db.query(`
     INSERT INTO resources (external_url, thumbnail_url, description, title, created_by)
