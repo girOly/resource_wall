@@ -51,7 +51,7 @@ const user_id = req.user.id
   });
 });
 
-router.get("/:id/liked", (req, res) => {
+router.get("/:id/bookmarked", (req, res) => {
 const user_id = req.params.id
   db.query(`
   SELECT resource_id, resources.external_url, resources.thumbnail_url, description, title
@@ -62,7 +62,7 @@ const user_id = req.params.id
     `, [user_id])
     .then(data => {
         const allResources = data.rows;
-        res.render("resource-liked", { allResources, user:req.user });
+        res.render("resource-bookmarked", { allResources, user:req.user });
       })
       .catch(err => {
         res
