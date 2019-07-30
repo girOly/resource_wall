@@ -18,13 +18,14 @@ const updateQuery = `
 
 router.get("/my_resources", (req, res) => {
   db.query(`
-  SELECT *
+  SELECT *, resources.id AS res_id
   FROM resources
   JOIN users ON created_by = users.id
   WHERE created_by = $1;
   `, [req.user.id])
   .then((userRes) => {
     const allResources = userRes.rows
+    console.log(allResources)
     res.render("myresources", { user:req.user, allResources })
   })
   .catch(err => {

@@ -1,13 +1,11 @@
 const express = require("express");
 const methodOverride = require('method-override');
 const router = express.Router();
-
 router.use(methodOverride('_method'))
 
 module.exports = db => {
   router.get("/new", (req, res) => {
     if (req.user) {
-      console.log(req.user)
     res.render("new", { user:req.user })
     }
   });
@@ -39,7 +37,7 @@ router.put("/:id/edit", (req, res) => {
           .json({ error: err.message });
       });
     } else {
-      res.redirect(`/${resId}`)
+      res.redirect(`resources/${resId}`)
     }
   })
 })
@@ -81,22 +79,6 @@ router.put("/:id/edit", (req, res) => {
     });
   });
 
-
-  router.get("/", (req, res) => {
-    db.query(`
-      SELECT *
-      FROM resources
-      ORDER BY id
-      `)
-    .then(data => {
-      const allResources = data.rows;
-      res.render("home",{allResources, user:req.user});
-    })
-    .catch(err => {
-      res.status(500).json({ error: err.message });
-    });
-  })
-
   router.put("/:id", (req, res) => {
     const resource_id = req.params.id
     const { external_url, description, title, thumbnail_url } = req.body
@@ -107,7 +89,7 @@ router.put("/:id/edit", (req, res) => {
       RETURNING *;
       `, [external_url, thumbnail_url, description, title, resource_id])
     .then(data => {
-      res.redirect(`/${resource_id}`);
+      res.redirect(`resources/${resource_id}`);
     })
     .catch(err => {
       res.status(500).json({ error: err.message });
@@ -138,7 +120,7 @@ router.put("/:id/edit", (req, res) => {
     `, [external_url, thumbnail_url, description, title, req.user.id])
     .then((data) => {
       const resource = data.rows[0]
-      res.redirect(`/${resource.id}`)
+      res.redirect(`/resources/${resource.id}`)
     })
     .catch(err => {
       res.status(500).json({ error: err.message });

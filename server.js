@@ -65,6 +65,7 @@ const loginRoute = require("./routes/login");
 // Note: Feel free to replace the example routes below with your own
 
 app.use("/users", usersRoutes(db));
+app.use("/resources", resourcesRoutes(db));
 app.use("/register", registerRoutes(db));
 app.use("/login", loginRoute(db));
 app.get('/logout', (req, res) => {
@@ -72,9 +73,21 @@ app.get('/logout', (req, res) => {
   res.redirect('login');
 });
 
+app.get("/", (req, res) => {
+  db.query(`
+    SELECT *
+    FROM resources
+    ORDER BY id
+    `)
+  .then(data => {
+    const allResources = data.rows;
+    res.render("home",{allResources, user:req.user});
+  })
+  .catch(err => {
+    res.status(500).json({ error: err.message });
+  });
+})
 
-
-app.use("/", resourcesRoutes(db));
 
 
 app.listen(PORT, () => {
