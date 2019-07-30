@@ -55,7 +55,7 @@ router.get("/:id/liked", (req, res) => {
 const user_id = req.params.id
   db.query(`
   SELECT resource_id, resources.external_url, resources.thumbnail_url, description, title
-    FROM liked
+    FROM bookmarked
     JOIN users ON user_id = users.id
     JOIN resources ON resource_id = resources.id
     WHERE users.id = $1;
