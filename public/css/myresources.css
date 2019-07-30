@@ -1,0 +1,55 @@
+.resource-box {
+	width: 20%;
+	display: flex;
+  justify-content: space-around;
+	border: 5px solid black;
+	flex-direction: column;
+	border-radius: 15px;
+	margin: 10px;
+}
+
+.card-deck {
+	height: 100%;
+}
+
+.resource-box	img {
+		flex-wrap: nowrap;
+		float: left;
+		margin: 0 auto;
+
+			}
+
+.resource-box	.card-title {
+		text-transform: capitalize;
+		}
+
+body {
+		background-image: url("64f67156.png");
+}
+
+body * {
+	/* border: 1px solid black; */
+}
+
+#resource-container {
+	justify-content: center;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.resource-box .card-footer {
+	text-align: center;
+	text-decoration: underline;
+	background-color: rgba(50, 115, 220, 0.1);
+}
+
+.img-background {
+	height: 400px;
+	width: 100%;
+	background-position: center center;
+	background-size: cover;
+}
+
+.card form .btn {
+	width: 100%;
+}

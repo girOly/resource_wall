@@ -2,8 +2,8 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>Profile</title>
-    <link rel="stylesheet" href="css/home.css" type="text/css">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="/css/myresources.css" type="text/css">
     <link rel="icon" href="data:;base64,=">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   </head>
@@ -19,17 +19,26 @@
             <img src= "<%= res.external_url %>"> -->
             <div class="card-deck">
   <div class="card">
-    <img src="<%= res.external_url %>" class="card-img-top">
+    <div class="img-background" style = "background-image: url('<%= res.external_url %>')">
+    <!-- <img src="<%= res.external_url %>" class="card-img-top"> -->
+    </div>
     <div class="card-body">
       <h5 class="card-title"><%= res.title %></h5>
       <p class="card-text"><%= res.description %></p>
     </div>
     <div class="card-footer">
-      <small class="text-muted">View Full Post..</small>
-    </div>
+      <a class="card-foot" href=" <%= res.id %>" >View Full Post..</a>
+  </div>
+  <form method="GET" action="/<%= res.id %>/edit">
+  <button type="submit" class="btn btn-dark">Edit</button>
+  </form>
+  <form method="POST" action="/<%= res.id %>?_method=DELETE">
+    <button type="submit" class="btn btn-danger">Delete</button>
+  </form>
   </div>
   </article>
   <% } %>
 </section>
+
 
   </body>

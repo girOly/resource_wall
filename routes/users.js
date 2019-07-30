@@ -25,7 +25,7 @@ router.get("/my_resources", (req, res) => {
   `, [req.user.id])
   .then((userRes) => {
     const allResources = userRes.rows
-    res.render("home", { user:req.user, allResources })
+    res.render("myresources", { user:req.user, allResources })
   })
   .catch(err => {
     res
