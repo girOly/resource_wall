@@ -8,12 +8,12 @@ const profileChanges = req.body
 const updateQuery = `
   UPDATE resources
   SET external_url = $1, thumbnail_url = $2, bio = $3, title = $4
-  WHERE id = $5
-  RETURNING *;
+  WHERE id = $5;
   `
-if (req.user.id === req.params.id) {
   db.query(updateQuery, [profileChanges])
-}
+  .then(() => {
+    res.redirect(`/${req.user.id}`)
+  })
 })
 
 router.get("/edit", (req, res) => {
