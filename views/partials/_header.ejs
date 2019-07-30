@@ -18,8 +18,11 @@
                 <span class="sr-only">(current)</span>
               </a>
         </li>
-        <% if (user) {%>  
-          <div class="form-inline" style="margin-inline-end: 15px"><%=`signed in as ${user.email}`%></div>
+        <% if (user) {%>
+          <div class="form-inline" style="margin-inline-end: 15px"></div>
+          <li class="nav-item">
+            <a class="nav-link" href="/users/<%= user.id %>"><%=`signed in as ${user.full_name}`%></a>
+          </li>
           <li class="nav-item">
             <a class="nav-link" href="/users/my_resources">My Resources</a>
           </li>
