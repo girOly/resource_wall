@@ -16,6 +16,24 @@ const updateQuery = `
   })
 })
 
+router.get("/my_resources", (req, res) => {
+  db.query(`
+  SELECT *
+  FROM resources
+  JOIN users ON created_by = users.id
+  WHERE created_by = $1;
+  `, [req.user.id])
+  .then((userRes) => {
+    const allResources = userRes.rows
+    res.render("home", { user:req.user, allResources })
+  })
+  .catch(err => {
+    res
+      .status(500)
+      .json({ error: err.message });
+  });
+})
+
 router.get("/edit", (req, res) => {
 const user_id = req.user.id
   db.query(`
