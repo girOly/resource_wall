@@ -10,21 +10,27 @@
 
   <body>
     <% include partials/_header %>
-    <% if (user) {%>
-      <h2>This is you: <%= user.full_name %></h2>
-      <% } %>
   <section class="resource_content">
     <section class="resource_image">
-      <img src= "<%= resource.external_url %>">
+      <img src= "<%= resource.thumbnail_url %>">
     </section>
     <div class="content">
     <header class="title">
       <h1> <%= resource.title %> </h1>
   </header>
   <div class ="text">
-    <p>Here is the description: <%= resource.description %></p>
+    <p> <%= resource.description %></p>
     <p>This is the full URL: <%= resource.thumbnail_url %></p>
+  </div>
+  <div class="form-group">
+    <label for="comment">Add a Comment:</label>
+    <textarea class="form-control" rows="5" id="comment"></textarea>
   </div>
   </div>
   </section>
+  <div class ="comments">
+    <h1> Comments </h1>
+    <p> This is where all the comments will be displayed in a cute lil box and shit </p>
+  </div>
+
   </body>

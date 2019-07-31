@@ -64,7 +64,8 @@ router.put("/:id/edit", (req, res) => {
     .then((resource) => {
       let resource_obj = resource.rows[0];
       let owner_id = resource.rows[0].created_by;
-
+    })
+    .then(() => {
       db.query(`
         SELECT *
         FROM categories;
@@ -72,7 +73,7 @@ router.put("/:id/edit", (req, res) => {
         .then((data) => {
           let categories = data.rows
         })
-
+      })
     .then(() => {
       if (user_id !== owner_id) {
         res.redirect(`/${resource_id}`)
@@ -85,7 +86,6 @@ router.put("/:id/edit", (req, res) => {
         .status(500)
         .json({ error: err.message });
     });
-  })
   });
 
   router.get("/:id", (req, res) => {

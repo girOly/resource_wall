@@ -49,15 +49,6 @@
                                       <textarea id="description" name="description" cols="40" rows="4" class="form-control" type="text"></textarea>
                                     </div>
                                   </div>
-                                  <div class="checkbox">
-                                    <% for (let category in categories) { %>
-                                      <label><input name = "categories" type="checkbox" value="<%= categories[category].id %>"><%= categories[category].title %></label>
-                                      <% } %>
-                                    </div>
-                                  <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit">Add your resource</button>
-                                </form>
-
-                              </div>
                                   <div class="form-group row">
                                     <div class="offset-4 col-8">
                                       <button name="submit" type="submit" class="btn btn-primary">Update My Profile</button>
