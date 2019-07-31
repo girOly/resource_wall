@@ -24,7 +24,7 @@
     		            </div>
     		            <div class="row">
     		                <div class="col-md-12">
-    		                    <form>
+    		                    <form method="POST" action="/resources/<%= resource.id %>/edit?_method=PUT">
                                   <div class="form-group row">
                                     <label for="title" class="col-4 col-form-label">Title</label>
                                     <div class="col-8">
@@ -54,16 +54,9 @@
                                       <label><input name = "categories" type="checkbox" value="<%= categories[category].id %>"><%= categories[category].title %></label>
                                       <% } %>
                                     </div>
-                                  <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit">Add your resource</button>
+                                  <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit">Update Resource</button>
                                 </form>
-
                               </div>
-                                  <div class="form-group row">
-                                    <div class="offset-4 col-8">
-                                      <button name="submit" type="submit" class="btn btn-primary">Update My Profile</button>
-                                    </div>
-                                  </div>
-
                                 </form>
     		                </div>
     		            </div>
