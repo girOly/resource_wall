@@ -8,12 +8,17 @@
   </head>
 
   <body>
-      <% include partials/_header %>
-<h1>resource page for: <%= resource.title %></h1>
-<h2>Here is the description: <%= resource.description %></h2>
-<h2>This is the picture URL: <%= resource.thumbnail_url %></h2>
-<h2>This is the resource URL: <%= resource.external_url %></h2>
+    <% include partials/_header %>
+  <container class="resource_content">
+    <article class="title">
+      <h1>resource page for: <%= resource.title %></h1>
+  </article>
+
+<p>Here is the description: <%= resource.description %></h2>
+<h2>This is the full URL: <%= resource.thumbnail_url %></h2>
+<img src= "<%= resource.external_url %>">
 <% if (user) {%>
   <h2>This is you: <%= user.full_name %></h2>
   <% } %>
+  </container>
   </body>
