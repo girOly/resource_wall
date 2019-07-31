@@ -2,36 +2,32 @@ const express = require("express");
 const router = express.Router();
 
 module.exports = db => {
-  router.get("/", (req, res) => {
-    db.query(`
-    `)
-    res.render("categories", {user:req.user})
-  });
 
-  router.post("/", (req, res) => {
-    const { email, password, full_name } = req.body
+  router.get("/:id", (req, res) => {
+    const categoryId = req.params.id
     db.query(`
-    SELECT email
-    FROM users
-    WHERE email = $1;
-    `, [email])
+    SELECT *
+    FROM resource_categories
+    JOIN resources ON resources.id = resource_id
+    WHERE category_id = $1;
+    `, [categoryId])
       .then(data => {
-      if (data) {
-        //return email already in use try again please
-      }
-      })
-      .then(db.query(`
-      INSERT INTO users (email, password, full_name)
-      VALUES ($1, $2, $3)
-      RETURNING *;
-    ` , [email, password, full_name])
-      .then(accInfo => {
-        res.redirect("login")
-      })
+      res.render("category", { user:req.user, category:data.rows })
+    })
       .catch(err => {
         res.status(500).json({ error: err.message });
+      })
     })
-  )
-})
-return router
+
+    router.get("/", (req, res) => {
+      db.query(`
+      SELECT *
+      FROM categories
+      `)
+      .then((categories) => {
+        console.log(categories.rows)
+        res.render("categories", { allCategories:categories.rows, user:req.user })
+      })
+    });
+  return router
 }
