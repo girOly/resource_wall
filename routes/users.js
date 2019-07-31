@@ -18,7 +18,7 @@ const updateQuery = `
 
 router.get("/my_resources", (req, res) => {
   db.query(`
-  SELECT *, resources.id AS res_id
+  SELECT *, resources.id AS res_id, resources.thumbnail_url AS profile_pic
   FROM resources
   JOIN users ON created_by = users.id
   WHERE created_by = $1;

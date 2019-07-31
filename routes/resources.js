@@ -27,7 +27,8 @@ router.put("/:id/edit", (req, res) => {
   console.log(resChanges);
   const findRes = `
     SELECT *
-    FROM resources WHERE id = $1;
+    FROM resources
+    WHERE id = $1;
     `
   const updateQuery = `
     UPDATE resources
@@ -48,7 +49,7 @@ router.put("/:id/edit", (req, res) => {
           .json({ error: err.message });
       });
     } else {
-      res.redirect(`resources/${resId}`)
+      res.redirect(`/${resId}`)
     }
   })
 })
@@ -62,31 +63,47 @@ router.put("/:id/edit", (req, res) => {
     WHERE id = $1;
     `, [resource_id])
     .then((resource) => {
+<<<<<<< HEAD
       let resource_obj = resource.rows[0];
       let owner_id = resource.rows[0].created_by;
     })
     .then(() => {
       db.query(`
+=======
+      if (user_id !== resource.rows[0].created_by) {
+        res.redirect(`/${resource_id}`)
+      } else {
+        db.query(`
+>>>>>>> fe4b73b2fd429fbee56b04bd5765f3eeec0f54ad
         SELECT *
         FROM categories;
         `)
-        .then((data) => {
-          let categories = data.rows
+        .then((cats) => {
+          let { categories } = cats.rows
+          res.render(`resources-edit`, { user:req.user, resource:resource.rows[0], categories })
         })
+<<<<<<< HEAD
       })
     .then(() => {
       if (user_id !== owner_id) {
         res.redirect(`/${resource_id}`)
       } else {
         res.render(`resources-edit`, { user:req.user, resource_obj, categories })
+=======
+>>>>>>> fe4b73b2fd429fbee56b04bd5765f3eeec0f54ad
       }
     })
     .catch(err => {
       res
         .status(500)
         .json({ error: err.message });
+<<<<<<< HEAD
     });
   });
+=======
+    })
+  })
+>>>>>>> fe4b73b2fd429fbee56b04bd5765f3eeec0f54ad
 
   router.get("/:id", (req, res) => {
     const resource_id = req.params.id
@@ -163,6 +180,5 @@ router.put("/:id/edit", (req, res) => {
       })
 
     })
-
     return router;
-}
+  }
