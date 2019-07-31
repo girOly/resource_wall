@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Categories</title>
+    <link rel="stylesheet" href="/css/categories.css" type="text/css">
+    <link rel="icon" href="data:;base64,=">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  </head>
+  <body>
+   <% include partials/_header %>
+   <section id="resource-container">
+     <% for(let cat of allCategories) { %>
+   <article class ="resource-box">
+     <div class="card-deck">
+       <div class="card">
+         <div class="img-background" style = "background-image: url('<%= cat.thumbnail_url %>')">
+     </div>
+       <div class="card-body">
+          <h5 class="card-title"><%= cat.title %></h5>
+          <p class="card-text"><%= cat.description %></p>
+        </div>
+          <div class="card-footer">
+            <a class="card-foot" href=" <%= cat.id %>" >View Full Category..</a>
+      </div>
+    </article>
+      <% } %>
+  </section>
+</body>
