@@ -2,10 +2,6 @@ body  {
   background-image: url("64f67156.png");
 }
 
-img {
-  align-items: center;
-}
-
 .profile_content {
   border: 4px solid black;
   display: flex;
@@ -13,15 +9,21 @@ img {
   padding: 10%;
 }
 
+.profile_pic img {
+  height: 400px;
+
+}
+
 .profile_pic {
   border:  2px solid red;
   display: flex;
-  width: 40%;
-  justify-content: flex-end;
+  width: 100%;
+  justify-content: center;
 }
 .full_name {
   border:  2px solid red;
   display: flex;
+  justify-content: center;
 }
 
 .profile_bio {
