@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="/css/myresources.css" type="text/css">
+    <link rel="icon" href="data:;base64,=">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  </head>
+  <body>
+  <% include partials/_header %>
+  <section id="resource-container">
+    <% for(let res of category) { %>
+  <article class ="resource-box">
+            <div class="card-deck">
+  <div class="card">
+    <div class="img-background" style = "background-image: url('<%= res.thumbnail_url %>')">
+    </div>
+    <div class="card-body">
+      <h5 class="card-title"><%= res.title %></h5>
+      <p class="card-text"><%= res.description %></p>
+    </div>
+    <div class="card-footer">
+      <a class="card-foot" href=" /resources/<%= res.res_id %>" >View Full Post..</a>
+  </div>
+  </form>
+  </div>
+  </article>
+  <% } %>
+</section>
+
+
+  </body>
