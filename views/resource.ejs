@@ -12,7 +12,9 @@
     <% include partials/_header %>
   <section class="resource_content">
     <section class="resource_image">
-      <img src= "<%= resource.thumbnail_url %>">
+    <a href= "<%= resource.external_url %>">
+      <img src= "<%= resource.thumbnail_url %>" target="_blank">
+    </a>
     </section>
     <div class="content">
     <header class="title">
@@ -20,12 +22,13 @@
   </header>
   <div class ="text">
     <p> <%= resource.description %></p>
-    <p>This is the full URL: <%= resource.thumbnail_url %></p>
+    <p>This is the full URL: <%= resource.external_url %></p>
   </div>
   <div class="form-group">
     <label for="comment">Add a Comment:</label>
-    <textarea class="form-control" rows="5" id="comment"></textarea>
+    <textarea class="form-control" rows="1" id="comment"></textarea>
   </div>
+  <button type="button" class="btn btn-primary btn-sm">Submit</button>
   </div>
   </section>
   <div class ="comments">
