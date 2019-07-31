@@ -27,7 +27,7 @@
       <p class="card-text"><%= res.description %></p>
     </div>
     <div class="card-footer">
-      <a class="card-foot" href=" <%= res.res_id %>" >View Full Post..</a>
+      <a class="card-foot" href=" /resources/<%= res.res_id %>" >View Full Post..</a>
   </div>
   <form method="GET" action="/resources/<%= res.res_id %>/edit">
   <button type="submit" class="btn btn-dark">Edit</button>

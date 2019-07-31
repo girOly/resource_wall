@@ -1,8 +1,8 @@
 <!-- Navigation -->
-<nav class="navbar navbar-expand-lg navbar-light static-top"style="background-color: #e3f2fd;">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top"style="background-color: #e3f2fd;">
   <div class="container">
-    <a class="navbar-brand" href="/">
-          <img src="/placeholderturtle.jpg">
+    <a class="navbar-brand" href="#">
+          <img src="/book.jpg">
         </a>
         <form class="form-inline">
           <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
@@ -14,28 +14,27 @@
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="/">Home
+          <a class="nav-link" href="/resources/new">New Resource
                 <span class="sr-only">(current)</span>
               </a>
         </li>
         <% if (user) {%>
           <div class="form-inline" style="margin-inline-end: 15px"></div>
           <li class="nav-item">
-            <a class="nav-link" href="/users/<%= user.id %>"><%=`signed in as ${user.full_name}`%></a>
+            <a class="nav-link" href="/users/<%= user.id %>"><%=`Signed in as: ${user.full_name}`%></a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/users/my_resources">My Resources</a>
           </li>
           <form method="GET" action="/logout">
-          <button class="btn btn-primary">Log out</button>
+          <button class="btn btn-danger">Log out</button>
           </form>
           <% } else {%>
             <li class="nav-item">
               <a class="nav-link" href="/login">Login</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/register">Register</a>
-        </form>
+              <a class="nav-link" href="/register">Register</a
         <% } %>
         </li>
       </ul>
