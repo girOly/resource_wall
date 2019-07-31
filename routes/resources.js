@@ -171,7 +171,7 @@ module.exports = db => {
         Promise.all(queryArr)
         .then(() => {
           res.redirect(`/resources/${resource_id}`)
-        })
+        }
         .catch(err => {
           res.status(500).json({ error: err.message });
         })
