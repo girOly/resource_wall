@@ -6,7 +6,17 @@ router.use(methodOverride('_method'))
 module.exports = db => {
   router.get("/new", (req, res) => {
     if (req.user) {
-    res.render("new", { user:req.user })
+      db.query(`SELECT *
+        FROM categories;
+        `)
+        .then((data) => {
+          res.render("new", { user:req.user, categories:data.rows})
+        })
+        .catch(err => {
+          res
+            .status(500)
+            .json({ error: err.message });
+        });
     }
   });
 
