@@ -59,6 +59,7 @@ app.use((req, res, next) => {
 // Note: Feel free to replace the example routes below with your own
 const usersRoutes = require("./routes/users");
 const resourcesRoutes = require("./routes/resources");
+const categoryRoutes = require("./routes/categories")
 const registerRoutes = require("./routes/register");
 const loginRoute = require("./routes/login");
 // Mount all resource routes
@@ -66,6 +67,7 @@ const loginRoute = require("./routes/login");
 
 app.use("/users", usersRoutes(db));
 app.use("/resources", resourcesRoutes(db));
+app.use("/categories", categoryRoutes(db));
 app.use("/register", registerRoutes(db));
 app.use("/login", loginRoute(db));
 app.get('/logout', (req, res) => {
