@@ -27,7 +27,7 @@
   </section>
   <div class ="comments">
     <h1> Comments </h1>
-    <form class="form-inline">
+    <form name= "comment" action="/resources/<%= resource.id %>" method="POST" class="form-inline">
   	<div class="form-group">
   		<label for="comment" class="control-label"></label>
   		<input type="comment" class="form-control"  name="comment" placeholder="">
