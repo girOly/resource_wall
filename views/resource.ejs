@@ -4,21 +4,27 @@
     <meta charset="utf-8">
     <title>Resource</title>
     <link rel="icon" href="data:;base64,=">
+    <link rel="stylesheet" href="/css/resource.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   </head>
 
   <body>
     <% include partials/_header %>
-  <container class="resource_content">
-    <article class="title">
-      <h1>resource page for: <%= resource.title %></h1>
-  </article>
-
-<p>Here is the description: <%= resource.description %></h2>
-<h2>This is the full URL: <%= resource.thumbnail_url %></h2>
-<img src= "<%= resource.external_url %>">
-<% if (user) {%>
-  <h2>This is you: <%= user.full_name %></h2>
-  <% } %>
-  </container>
+    <% if (user) {%>
+      <h2>This is you: <%= user.full_name %></h2>
+      <% } %>
+  <section class="resource_content">
+    <section class="resource_image">
+      <img src= "<%= resource.external_url %>">
+    </section>
+    <div class="content">
+    <header class="title">
+      <h1> <%= resource.title %> </h1>
+  </header>
+  <div class ="text">
+    <p>Here is the description: <%= resource.description %></p>
+    <p>This is the full URL: <%= resource.thumbnail_url %></p>
+  </div>
+  </div>
+  </section>
   </body>

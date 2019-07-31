@@ -1,0 +1,23 @@
+.resource_content {
+  border: 1px solid black;
+  display: flex;
+  justify-content: space-between;
+}
+
+.resource_content .content {
+  border: 1px solid red;
+  flex-grow: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.resource_content .text {
+  border: 2px solid blue;
+}
+
+.resource_image {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+}
