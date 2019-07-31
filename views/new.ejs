@@ -11,7 +11,7 @@
         <div>make your new resource <%= user.full_name %></div>
         <% } %>
         <div>
-        <form action="/new" method="POST">
+        <form action="/resources/new" method="POST">
           <div>
             <input name="title" class="form-control" placeholder="Title">
           </div>
@@ -19,12 +19,18 @@
             <input name= "description" class="form-control" placeholder="Description" required>
           </div>
           <div>
-              <input name= "external_url" class="form-control" placeholder="Image" required>
+              <input name= "thumbnail_url" class="form-control" placeholder="Image" required>
           </div>
           <div>
-              <input name= "thumbnail_url" class="form-control" placeholder="Url" required>
+              <input name= "external_url" class="form-control" placeholder="Url" required>
           </div>
+          <div class="checkbox">
+            <% for (let category in categories) { %>
+              <label><input name = "categories" type="checkbox" value="<%= categories[category].id %>"><%= categories[category].title %></label>
+              <% } %>
+            </div>
           <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit">Add your resource</button>
         </form>
+
       </div>
 </body>

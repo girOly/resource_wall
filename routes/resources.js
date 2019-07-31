@@ -16,7 +16,7 @@ module.exports = db => {
           res
             .status(500)
             .json({ error: err.message });
-        });
+      });
     }
   });
 
@@ -62,10 +62,22 @@ router.put("/:id/edit", (req, res) => {
     WHERE id = $1;
     `, [resource_id])
     .then((resource) => {
-      if (user_id !== resource.rows[0].created_by) {
+      let resource_obj = resource.rows[0];
+      let owner_id = resource.rows[0].created_by;
+
+      db.query(`
+        SELECT *
+        FROM categories;
+        `)
+        .then((data) => {
+          let categories = data.rows
+        })
+
+    .then(() => {
+      if (user_id !== owner_id) {
         res.redirect(`/${resource_id}`)
       } else {
-        res.render(`resources-edit`, { user:req.user, resource:resource.rows[0] })
+        res.render(`resources-edit`, { user:req.user, resource_obj, categories })
       }
     })
     .catch(err => {
@@ -73,6 +85,7 @@ router.put("/:id/edit", (req, res) => {
         .status(500)
         .json({ error: err.message });
     });
+  })
   });
 
   router.get("/:id", (req, res) => {
@@ -122,20 +135,34 @@ router.put("/:id/edit", (req, res) => {
   })
 
 
-  router.post("/resources/new", (req, res) => {
-    const { external_url, thumbnail_url, description, title } = req.body
+  router.post("/new", (req, res) => {
+    console.log(req.body)
+    const { external_url, thumbnail_url, description, title, categories } = req.body
     db.query(`
     INSERT INTO resources (external_url, thumbnail_url, description, title, created_by)
     VALUES ($1, $2, $3, $4, $5)
     RETURNING *;
     `, [external_url, thumbnail_url, description, title, req.user.id])
     .then((data) => {
-      const resource = data.rows[0]
-      res.redirect(`/resources/${resource.id}`)
+      console.log(data)
+      const resource_id = data.rows[0].id
+      let queryArr = [];
+      for (let cat of categories) {
+        queryArr.push(db.query(`
+          INSERT INTO resource_categories (category_id, resource_id)
+          VALUES ($1, $2);
+          `, [cat, resource_id]))
+        }
+        Promise.all(queryArr)
+        .then(() => {
+          res.redirect(`/resources/${resource_id}`)
+        })
+        .catch(err => {
+          res.status(500).json({ error: err.message });
+        })
+      })
+
     })
-    .catch(err => {
-      res.status(500).json({ error: err.message });
-  })
-})
-  return router;
+
+    return router;
 }
