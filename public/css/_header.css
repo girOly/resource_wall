@@ -1,4 +1,3 @@
-img {
-  width: inherit;
-  height: inherit;
-} 
+button.btn.btn-danger {
+  margin-left: 5%;
+}

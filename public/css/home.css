@@ -12,6 +12,9 @@
 	height: 100%;
 }
 
+.card-text {
+}
+
 .resource-box	img {
 		flex-wrap: nowrap;
 		float: left;
@@ -21,10 +24,13 @@
 
 .resource-box	.card-title {
 		text-transform: capitalize;
+		font-family: 'Josefin Sans', sans-serif;
+		border-bottom: 2px solid grey;
 		}
 
 body {
 		background-image: url("64f67156.png");
+		font-family: 'Raleway', sans-serif !important;
 }
 
 body * {
