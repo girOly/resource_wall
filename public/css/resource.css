@@ -63,7 +63,6 @@
 body {
 		background-image: url("64f67156.png");
     font-family: 'Raleway', sans-serif !important;
-
 }
 
 body h1 {
@@ -77,4 +76,15 @@ body * {
 .comments  h1 {
   display: flex;
   justify-content: center;
+}
+
+.rating {
+  display: flex;
+  margin-left: 15.3%;
+}
+
+
+/* Rating Stars */
+.checked {
+  color: orange;
 }
