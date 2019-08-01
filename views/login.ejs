@@ -4,43 +4,41 @@
     <meta charset="utf-8">
     <title>Log In</title>
     <link rel="stylesheet" href="css/login.css" type="text/css">
-    <link rel="icon" href="data:;base64,=">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  </head>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+      <link href="https://fonts.googleapis.com/css?family=Josefin+Sans|Raleway&display=swap" rel="stylesheet">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
   <body>
   <% include partials/_header %>
-    <div class="container-fluid">
-  <div class="row no-gutter">
-    <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image"></div>
-    <div class="col-md-8 col-lg-6">
-      <div class="login d-flex align-items-center py-5">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-9 col-lg-8 mx-auto">
-              <h3 class="login-heading mb-4">Welcome back!</h3>
-              <form   action="/login" method="POST">
-                <div class="form-label-group">
-                  <input name="email" type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-                  <label for="inputEmail">Email address</label>
-                </div>
 
-                <div class="form-label-group">
-                  <input name= "password" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-                  <label for="inputPassword">Password</label>
-                </div>
-
-                <div class="custom-control custom-checkbox mb-3">
-                  <input type="checkbox" class="custom-control-input" id="customCheck1">
-                  <label class="custom-control-label" for="customCheck1">Remember password</label>
-                </div>
-                <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit">Sign in</button>
-                <div class="text-center">
-                  <a class="small" href="/register">Don't have an Account?</a></div>
-              </form>
-            </div>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+  <div class="container">
+    <span> <h1  class="title"> Resource Wall <h1> </span><br/>
+      <div class="card card-login mx-auto text-center bg-dark" id="login_box">
+          <div class="card-header mx-auto bg-dark">
+          <span class="logo_title mt-5" id= "subtitle"> Welcome Back! </span>
           </div>
-        </div>
+          <div class="card-body">
+              <form action="/login" method="post">
+                  <div class="input-group form-group">
+                      <div class="input-group-prepend">
+                          <span class="input-group-text"><i class="fas fa-user"></i></span>
+                      </div>
+                      <input type="text" name="email" class="form-control" placeholder="Username">
+                  </div>
+
+                  <div class="input-group form-group">
+                      <div class="input-group-prepend">
+                          <span class="input-group-text"><i class="fas fa-key"></i></span>
+                      </div>
+                      <input type="password" name="password" class="form-control" placeholder="Password">
+                  </div>
+
+                  <div class="form-group">
+                      <input type="submit" name="btn" value="Login" class="btn btn-outline-danger float-right login_btn">
+                  </div>
+
+              </form>
+          </div>
       </div>
-    </div>
   </div>
 </body>

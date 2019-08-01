@@ -30,11 +30,11 @@
   <div class="sub_bar">
   <button id="bookmark" type="button" class="btn btn-secondary btn-sm">Bookmark</button>
     <span class="rating">
-    <button class="fa fa-star"></button>
-    <button class="fa fa-star"></button>
-    <button class="fa fa-star"></button>
-    <button class="fa fa-star"></button>
-    <button class="fa fa-star"></button>
+    <button class="fa fa-star first"></button>
+    <button class="fa fa-star second"></button>
+    <button class="fa fa-star third"></button>
+    <button class="fa fa-star four"></button>
+    <button class="fa fa-star five"></button>
   </span>
   </div>
   <div class ="comments">
@@ -44,14 +44,15 @@
   		<label for="comment" class="control-label"></label>
   		<input type="comment" class="form-control"  name="comment" placeholder="">
   		<button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+      <section>
+      <% for (let comment of resource) { %>
+        <% if (comment.content !== null || comment.content !== undefined) { %>
+          <p><%= comment.content %> created by <%= comment.full_name %> </p>
+          <% } %>
+          <% } %>
+        </section>
   	</div>
-  </form>
-  <% for (let comment of resource) { %>
-    <% if (comment.content !== null || comment.content !== undefined) { %>
-    <p><%= comment.content %> created by <%= comment.full_name %> </p>
-    <% } %>
-    <% } %>
   </div>
 
   </body>
-

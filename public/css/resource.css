@@ -1,6 +1,5 @@
 .resource_content {
   /* border: 1px solid black; */
-  display: flex;
   justify-content: center;
 }
 
@@ -33,7 +32,8 @@
 
 .title {
   /* background: 5px purple; */
-  margin-right: 25%;
+  margin-left: 5%;
+  margin-right: 20%;
   font-size: 40px;
   display: flex;
   justify-content: center;
@@ -79,9 +79,10 @@ body * {
 }
 
 .sub_bar {
-  margin-top: 5px;
   display: flex;
-  margin-left: 1%;
+  flex-direction: column;
+  margin-left: 2%;
+  margin-top:10px;
 }
 
 .rating {
@@ -90,5 +91,5 @@ body * {
 
 #bookmark {
   display: flex;
-  margin-left: 1%;
+  width: 400px;
 }
