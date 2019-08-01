@@ -12,7 +12,7 @@ INSERT INTO comments (user_id, resource_id, content, date_created)
 VALUES (4, 2, 'This is the best post, I love it!', '1992-01-01');
 
 INSERT INTO comments (user_id, resource_id, content, date_created)
-VALUES (1, 1, 'This is the best post, I love it!', '1995-01-01');
+VALUES (3, 1, 'This is the best post, I love it!', '1995-01-01');
 
 INSERT INTO comments (user_id, resource_id, content, date_created)
 VALUES (7, 1, 'This is the best post, I love it!', '2010-10-01');
