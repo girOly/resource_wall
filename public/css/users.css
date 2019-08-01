@@ -12,6 +12,10 @@ body  {
   margin-bottom: 1%;
 }
 
+.edit {
+  height: 400px;
+}
+
 .full_name h1 {
     font-size: 3rem;
 }
