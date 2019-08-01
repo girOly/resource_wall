@@ -34,13 +34,13 @@
 .title {
   /* background: 5px purple; */
   margin-right: 12%;
-  font-size: 2rem;
+  font-size: 40px;
   display: flex;
   justify-content: center;
 }
 
 .text {
-  font-size: 1.3rem;
+  font-size: 25px;
 }
 
 .resource_image img {
@@ -78,13 +78,16 @@ body * {
   justify-content: center;
 }
 
-.rating {
+.sub_bar {
   display: flex;
-  margin-left: 15.3%;
+  margin-left: 2%;
 }
 
+.rating {
+  margin-left: 170px;
+}
 
-/* Rating Stars */
-.checked {
-  color: orange;
+#bookmark {
+  display: flex;
+  align-content: flex-start;
 }
