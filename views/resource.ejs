@@ -39,11 +39,11 @@
   </div>
   <div class ="comments">
     <h1> Comments </h1>
-    <form name= "comment" action="/resources/<%= resource[0].id %>" method="POST" class="form-inline">
+    <form name= "comment" action="/resources/<%= resource[0].id %>/comment" method="POST" class="form-inline">
   	<div class="form-group">
   		<label for="comment" class="control-label"></label>
   		<input type="comment" class="form-control"  name="comment" placeholder="">
-  		<button type="submit" class="btn btn-primary">Submit</button>
+  		<button type="submit" action class="btn btn-primary">Submit</button>
     </form>
       <section>
       <% for (let comment of resource) { %>
