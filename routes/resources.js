@@ -101,15 +101,26 @@ router.get("/:id/edit", (req, res) => {
 router.get("/:id", (req, res) => {
   const resource_id = req.params.id
   db.query(`
-  SELECT r.*, c.date_created, c.content, u.full_name
+  SELECT DISTINCT r.*, c.date_created, c.content, u.full_name
   FROM resources r
   LEFT JOIN comments c ON c.resource_id = r.id
   LEFT JOIN users u ON c.user_id = u.id
   WHERE r.id = $1;
   `, [resource_id])
-  .then(data => {
-    const resource = data.rows;
-    res.render("resource",{ resource, user: req.user });
+  .then((comments) => {
+    db.query(`
+    SELECT AVG(rating)
+    FROM resource_rating
+    WHERE resource_id = $1;
+    `,[resource_id])
+    .then((rating) => {
+      const resource = comments.rows;
+      resource.rating = parseFloat(rating.rows[0].avg).toFixed(1);
+      res.render("resource",{ resource, user: req.user });
+    })
+    .catch(err => {
+      res.status(500).json({ error: err.message });
+    })
   })
   .catch(err => {
     res.status(500).json({ error: err.message });

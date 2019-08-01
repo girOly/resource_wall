@@ -37,6 +37,7 @@
     <button class="fa fa-star five"></button>
   </span>
   </div>
+  <div>This is the average rating <%= resource.rating%></div>
   <div class ="comments">
     <h1> Comments </h1>
     <form name= "comment" action="/resources/<%= resource[0].id %>/comment" method="POST" class="form-inline">

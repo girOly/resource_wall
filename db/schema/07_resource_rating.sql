@@ -1,0 +1,8 @@
+DROP TABLE IF EXISTS resource_rating CASCADE;
+
+CREATE TABLE resource_rating (
+  id SERIAL PRIMARY KEY NOT NULL,
+  created_by INTEGER REFERENCES users(id) ON DELETE CASCADE,
+  resource_id INTEGER REFERENCES resources(id) ON DELETE CASCADE,
+  rating INTEGER NOT NULL
+  );
