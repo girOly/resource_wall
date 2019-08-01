@@ -4,6 +4,19 @@ const router = express.Router();
 router.use(methodOverride('_method'))
 
 module.exports = db => {
+router.post("/:id/rating", (req, res) => {
+  // const rating = req.query.value
+  console.log(req.body)
+  const { rating } = req.body
+  db.query(`
+  INSERT INTO resource_rating (created_by, rating, resource_id)
+  VALUES ($1, $2, $3);
+  `, [req.user.id, rating, req.params.id])
+  .then(() => {
+    res.redirect(`/resources/${req.params.id}`)
+  })
+})
+
 router.get("/new", (req, res) => {
   if (req.user) {
     db.query(`

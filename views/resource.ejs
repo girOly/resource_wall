@@ -45,6 +45,19 @@
     </form>
     <form>
     <button class="fa fa-star five" value="5"></button>
+
+    <input type="radio" name="rating" value="1">
+      <label for="1"> 1 </label><br>
+    <input type="radio" name="rating" value="2">
+      <label for="2"> 2 </label><br>
+    <input type="radio" name="rating" value="3">
+      <label for="3"> 3 </label><br>
+    <input type="radio" name="rating" value="4">
+      <label for="4"> 4 </label><br>
+    <input type="radio" name="rating" value="5">
+     <label for="5"> 5 </label><br>
+
+  <button class="btn-primary" value="rating">Rate Me</button>
   </form>
     <script>
     const yellow = function(){
@@ -55,7 +68,6 @@
   const blank = function(){
   $(this).prevAll().css( "background-color", "initial" );
   $(this).css( "background-color", "initial" );
-
 }
 
 const all = function(){
