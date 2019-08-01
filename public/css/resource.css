@@ -80,14 +80,14 @@ body * {
 
 .sub_bar {
   display: flex;
-  margin-left: 2%;
+  margin-left: 1%;
 }
 
 .rating {
-  margin-left: 170px;
+  margin-left: 145px;
 }
 
 #bookmark {
   display: flex;
-  align-content: flex-start;
+  margin-left: 1%;
 }

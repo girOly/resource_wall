@@ -28,6 +28,10 @@
 		border-bottom: 2px solid grey;
 		}
 
+#bookmark {
+	margin-left: 35%;
+}
+
 body {
 		background-image: url("64f67156.png");
 		font-family: 'Raleway', sans-serif !important;
