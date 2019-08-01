@@ -2,8 +2,7 @@ const express = require('express');
 const router  = express.Router();
 
 module.exports = (db) => {
-router.put("/edit", (req, res) => {
-  // will need to consolelog req.body when put button works
+router.put("/:id/edit", (req, res) => {
 const profileChanges = req.body
 const updateQuery = `
   UPDATE resources
