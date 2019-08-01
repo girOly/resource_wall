@@ -214,7 +214,7 @@ router.post("/new", (req, res) => {
   })
 })
 
-router.post("/bookmarked/:id", (req, res) => {
+router.post("/:id/bookmarked", (req, res) => {
   const resource_id = req.params.id
   const user_id = req.user.id
   db.query(`
