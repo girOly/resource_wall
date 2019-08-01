@@ -147,6 +147,23 @@ router.delete("/:id", (req, res) => {
   });
 })
 
+router.post("/:id/comment", (req, res) => {
+  const { comment } = req.body
+  console.log(req.body)
+  const user_id = req.user.id
+  const resource_id = req.params.id
+  db.query(`
+  INSERT INTO comments (content, user_id, resource_id)
+  VALUES ($1, $2, $3);
+  `, [comment, user_id, resource_id])
+  .then(() => {
+    res.redirect(`/resources/${resource_id}`)
+  })
+  .catch(err => {
+    res.status(500).json({ error: err.message });
+  })
+})
+
 router.post("/new", (req, res) => {
   const { external_url, thumbnail_url, description, title, categories } = req.body
   db.query(`
