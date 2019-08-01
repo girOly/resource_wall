@@ -12,17 +12,18 @@
   <body>
     <% include partials/_header %>
   <section class="resource_content">
-    <div class="resource_image">
-    <a href= "<%= resource.external_url %>">
-      <img src= "<%= resource.thumbnail_url %>" target="_blank">
+
+    <section class="resource_image">
+    <a href= "<%= resource[0].external_url %>">
+      <img src= "<%= resource[0].thumbnail_url %>" target="_blank">
     </a>
   </div>
     <div class="content">
-    <header>
-      <h1 class="title"> <%= resource.title %> </h1>
+    <header class="title">
+      <h1> <%= resource[0].title %> </h1>
   </header>
   <div class ="text">
-    <p> <%= resource.description %></p>
+    <p> <%= resource[0].description %></p>
   </div>
   </div>
   </section>
@@ -38,14 +39,19 @@
   </div>
   <div class ="comments">
     <h1> Comments </h1>
-    <form name= "comment" action="/resources/<%= resource.id %>" method="POST" class="form-inline">
+    <form name= "comment" action="/resources/<%= resource[0].id %>" method="POST" class="form-inline">
   	<div class="form-group">
   		<label for="comment" class="control-label"></label>
   		<input type="comment" class="form-control"  name="comment" placeholder="">
   		<button type="submit" class="btn btn-primary">Submit</button>
   	</div>
   </form>
-  <p> This is where all the comments will be displayed in a cute lil box and shit </p>
+  <% for (let comment of resource) { %>
+    <% if (comment.content !== null || comment.content !== undefined) { %>
+    <p><%= comment.content %> created by <%= comment.full_name %> </p>
+    <% } %>
+    <% } %>
   </div>
 
   </body>
+
