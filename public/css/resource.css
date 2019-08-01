@@ -93,3 +93,8 @@ body * {
   display: flex;
   width: 400px;
 }
+
+.star {
+  display: flex;
+  justify-content: flex-start;
+}
