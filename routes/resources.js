@@ -164,7 +164,7 @@ router.delete("/:id", (req, res) => {
     WHERE id = $1;
     `, [resource_id])
   .then(() => {
-    res.redirect("/");
+    res.redirect("/users/my_resources");
   })
   .catch(err => {
     res.status(500).json({ error: err.message });

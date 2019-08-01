@@ -55,21 +55,21 @@ router.get("/:id/bookmarked", (req, res) => {
 const user_id = req.params.id
   db.query(`
   SELECT resource_id, resources.external_url, resources.thumbnail_url, description, title
-    FROM bookmarked
-    JOIN users ON user_id = users.id
-    JOIN resources ON resource_id = resources.id
-    WHERE users.id = $1;
-    `, [user_id])
-    .then(data => {
-        const allResources = data.rows;
-        res.render("resource-bookmarked", { allResources, user:req.user });
-      })
-      .catch(err => {
-        res
-          .status(500)
-          .json({ error: err.message });
-      });
-  });
+  FROM bookmarked
+  JOIN users ON user_id = users.id
+  JOIN resources ON resource_id = resources.id
+  WHERE users.id = $1;
+  `, [user_id])
+  .then(data => {
+      const allResources = data.rows;
+      res.render("resource-bookmarked", { allResources, user:req.user });
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message });
+    });
+});
 
 router.get("/:id", (req, res) => {
 const user_id = req.params.id
