@@ -27,13 +27,13 @@
 .resource_image{
   border-radius: 50px;
   margin-left: 2%;
-  margin-top: 10%;
+  margin-top: 5%;
   display: flex;
 }
 
 .title {
   /* background: 5px purple; */
-  margin-right: 12%;
+  margin-right: 25%;
   font-size: 40px;
   display: flex;
   justify-content: center;
@@ -53,7 +53,7 @@
 }
 
 .comments{
-    margin-top: 10%;
+    margin-top: 5%;
 }
 
 .form-group {
@@ -79,6 +79,7 @@ body * {
 }
 
 .sub_bar {
+  margin-top: 5px;
   display: flex;
   margin-left: 1%;
 }
