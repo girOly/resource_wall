@@ -1,0 +1,20 @@
+body {
+		background-image: url("64f67156.png");
+		font-family: 'Raleway', sans-serif !important;
+}
+
+.flex {
+  margin-top: 10%;
+  margin-left: 11%;
+  width: 75%;
+  display: flex;
+  justify-content: center;
+
+}
+
+.title {
+  font-size: 40px;
+  display: flex;
+  justify-content: center;
+  margin-top: 10%;
+}

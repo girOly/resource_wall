@@ -4,14 +4,17 @@
     <meta charset="utf-8">
     <title>Profile</title>
     <link rel="icon" href="data:;base64,=">
+    <link rel="stylesheet" href="/css/newresource.css" type="text/css">
+
     <link href="https://fonts.googleapis.com/css?family=Josefin+Sans|Raleway&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   </head>
   <body>
+      <% include partials/_header %>
       <% if (user) {%>
-        <div>make your new resource <%= user.full_name %></div>
+        <div class="title"> <h1> Make your new Resource: <%= user.full_name %> </h1></div>
         <% } %>
-        <div>
+        <div class="flex">
         <form action="/resources/new" method="POST">
           <div>
             <input name="title" class="form-control" placeholder="Title">
