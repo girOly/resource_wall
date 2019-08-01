@@ -29,12 +29,12 @@
   </div>
   </section>
   <div class="sub_bar">
-    <form>
-  <button id="bookmark" type="button" class="btn btn-secondary btn-sm"> Bookmark</button>
+    <form action="/resources/<%= resource[0].id %>/bookmarked" method="POST">
+  <button id="bookmark" type="submit" class="btn btn-secondary btn-sm"> Bookmark</button>
     </form>
     <span class="rating star">
     <form action="/resources/<%= resource[0].id %>/rating" method="POST">
-    <button class="fa fa-star first" value="1"></button>
+    <!-- <button class="fa fa-star first" value="1"></button>
     </form>
     <form>
     <button class="fa fa-star second" value="2"></button>
@@ -44,7 +44,7 @@
     <button class="fa fa-star four" value="4"></button>
     </form>
     <form>
-    <button class="fa fa-star five" value="5"></button>
+    <button class="fa fa-star five" value="5"></button> -->
 
     <input type="radio" name="rating" value="1">
       <label for="1"> 1 </label><br>
