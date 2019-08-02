@@ -25,7 +25,7 @@ module.exports = db => {
       FROM categories
       `)
       .then((categories) => {
-        res.render("categories", { allCategories:categories.rows, user:req.user, res:resource.rows })
+        res.render("categories", { allCategories:categories.rows, user:req.user })
       })
     });
   return router
