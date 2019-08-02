@@ -3,7 +3,7 @@ DELETE FROM bookmarked;
 ALTER SEQUENCE bookmarked_id_seq RESTART WITH 1;
 
 INSERT INTO bookmarked (user_id, resource_id)
-VALUES (1, 1);
+VALUES (1, 8);
 
 INSERT INTO bookmarked (user_id, resource_id)
 VALUES (1, 2);
