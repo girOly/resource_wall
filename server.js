@@ -37,6 +37,7 @@ app.use("/styles", sass({
   outputStyle: 'expanded'
 }));
 app.use(express.static("public"));
+app.use(methodOverride('_method'));
 app.use((req, res, next) => {
   if (!req.session.user_id) {
     return next();
@@ -54,6 +55,7 @@ app.use((req, res, next) => {
     })
   .catch((err) => next(err))
 });
+
 
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own

@@ -52,7 +52,7 @@ router.get("/search", (req, res) => {
 
 router.put("/:id/edit", (req, res) => {
   const resId = req.params.id
-  const resChanges = req.body
+  const { external_url, description, title, thumbnail_url } = req.body
   const findRes = `
     SELECT *
     FROM resources
@@ -67,9 +67,9 @@ router.put("/:id/edit", (req, res) => {
   db.query(findRes, [resId])
   .then((data) => {
     if (req.user.id === data.rows[0].created_by) {
-      db.query(updateQuery, [resChanges])
+      db.query(updateQuery, [external_url, thumbnail_url, description, title, resId])
       .then((resource) => {
-        res.render(`resource`, { resource:resource.rows[0], user:req.user })
+        res.render(`resource`, { resource:resource.rows, user:req.user })
       })
       .catch(err => {
         res
@@ -140,22 +140,23 @@ router.get("/:id", (req, res) => {
   });
 });
 
-router.put("/:id", (req, res) => {
-  const resource_id = req.params.id
-  const { external_url, description, title, thumbnail_url } = req.body
-  db.query(`
-    UPDATE resources
-    SET external_url = $1, thumbnail_url = $2, description = $3, title = $4
-    WHERE id = $5
-    RETURNING *;
-    `, [external_url, thumbnail_url, description, title, resource_id])
-  .then(data => {
-    res.redirect(`resources/${resource_id}`);
-  })
-  .catch(err => {
-    res.status(500).json({ error: err.message });
-  });
-})
+// router.put("/:id/edit", (req, res) => {
+//   const resource_id = req.params.id
+//   const { external_url, description, title, thumbnail_url } = req.body
+//   console.log(external_url, thumbnail_url, description, title, resource_id)
+//   db.query(`
+//     UPDATE resources
+//     SET external_url = $1, thumbnail_url = $2, description = $3, title = $4
+//     WHERE id = $5
+//     RETURNING *;
+//     `, [external_url, thumbnail_url, description, title, resource_id])
+//   .then(data => {
+//     res.redirect(`/resources/${resource_id}`);
+//   })
+//   .catch(err => {
+//     res.status(500).json({ error: err.message });
+//   });
+// })
 
 router.delete("/:id", (req, res) => {
   const resource_id = req.params.id
