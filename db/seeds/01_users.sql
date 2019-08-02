@@ -2,7 +2,7 @@ DELETE FROM users;
 
 ALTER SEQUENCE users_id_seq RESTART WITH 1;
 
-INSERT INTO users (full_name, password, email, bio, thumbnail_url) VALUES ('Alice Smith', 'password', 'alicesmith@gmail.com', 'my name is Alice and I like apples', 'https://placekeanu.com/200/150');
+INSERT INTO users (full_name, password, email, bio, thumbnail_url) VALUES ('Alice Smith', 'password', 'alicesmith@gmail.com', 'my name is Alice and I like apples', 'https://us.123rf.com/450wm/tuktukdesign/tuktukdesign1904/tuktukdesign190400009/124070848-stock-vector-folder-icon-vector-with-female-person-profile-avatar-symbol-for-information-data-in-flat-color-glyph.jpg?ver=6');
 
 INSERT INTO users (full_name, password, email, bio, thumbnail_url) VALUES ('John Michael', 'password', 'johnmichael@gmail.com','my name is John and I like lemons', 'https://placekeanu.com/200/150');
 
