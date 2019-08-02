@@ -22,11 +22,15 @@ module.exports = db => {
     router.get("/", (req, res) => {
       db.query(`
       SELECT *
-      FROM resources
       FROM categories
       `)
       .then((categories) => {
+<<<<<<< HEAD
+        console.log(categories.rows)
+        res.render("categories", { allCategories:categories.rows, user:req.user, })
+=======
         res.render("categories", { allCategories:categories.rows, user:req.user, res:resource.rows })
+>>>>>>> e24b6a8e58ad9c85e1af60488dd3e9f2c1540fad
       })
     });
   return router
