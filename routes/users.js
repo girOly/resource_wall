@@ -3,16 +3,21 @@ const router  = express.Router();
 
 module.exports = (db) => {
 router.put("/:id/edit", (req, res) => {
-const profileChanges = req.body
+const { thumbnail_url, bio, full_name, email } = req.body
 const updateQuery = `
-  UPDATE resources
-  SET thumbnail_url = $1, bio = $2, full_name = $3, email = 4$
+  UPDATE users
+  SET thumbnail_url = $1, bio = $2, full_name = $3, email = $4
   WHERE id = $5;
   `
-  db.query(updateQuery, [profileChanges, req.user.id])
+  db.query(updateQuery, [thumbnail_url, bio, full_name, email, req.user.id])
   .then(() => {
-    res.redirect(`/${req.user.id}`)
+    res.redirect(`/users/${req.user.id}`)
   })
+  .catch(err => {
+    res
+      .status(500)
+      .json({ error: err.message });
+  });
 })
 
 router.get("/my_resources", (req, res) => {
@@ -24,7 +29,6 @@ router.get("/my_resources", (req, res) => {
   `, [req.user.id])
   .then((userRes) => {
     const allResources = userRes.rows
-    console.log(allResources)
     res.render("myresources", { user:req.user, allResources })
   })
   .catch(err => {

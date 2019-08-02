@@ -15,7 +15,7 @@ module.exports = db => {
     `, [email])
       .then(data => {
       if (data) {
-        //return email already in use try again please
+        res.status(400).json('email already in use, please try another')
       }
       })
       .then(db.query(`
