@@ -4,7 +4,6 @@ const router  = express.Router();
 module.exports = (db) => {
 router.put("/:id/edit", (req, res) => {
 const { thumbnail_url, bio, full_name, email } = req.body
-console.log(req.body)
 const updateQuery = `
   UPDATE users
   SET thumbnail_url = $1, bio = $2, full_name = $3, email = $4
@@ -30,7 +29,6 @@ router.get("/my_resources", (req, res) => {
   `, [req.user.id])
   .then((userRes) => {
     const allResources = userRes.rows
-    console.log(allResources)
     res.render("myresources", { user:req.user, allResources })
   })
   .catch(err => {

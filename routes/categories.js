@@ -26,7 +26,6 @@ module.exports = db => {
       FROM categories
       `)
       .then((categories) => {
-        console.log(categories.rows)
         res.render("categories", { allCategories:categories.rows, user:req.user, res:resource.rows })
       })
     });
