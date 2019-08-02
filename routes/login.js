@@ -19,7 +19,7 @@ router.post("/", (req, res) => {
         req.session.user_id = data.rows[0].id
         res.redirect("/")
       } else {
-// try again message
+        res.status(400).json('please try again')
       }
     })
     .catch(err => {

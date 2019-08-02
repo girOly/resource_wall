@@ -6,7 +6,6 @@ router.use(methodOverride('_method'))
 module.exports = db => {
 router.post("/:id/rating", (req, res) => {
   // const rating = req.query.value
-  console.log(req.body)
   const { rating } = req.body
   db.query(`
   INSERT INTO resource_rating (created_by, rating, resource_id)
@@ -140,24 +139,6 @@ router.get("/:id", (req, res) => {
   });
 });
 
-// router.put("/:id/edit", (req, res) => {
-//   const resource_id = req.params.id
-//   const { external_url, description, title, thumbnail_url } = req.body
-//   console.log(external_url, thumbnail_url, description, title, resource_id)
-//   db.query(`
-//     UPDATE resources
-//     SET external_url = $1, thumbnail_url = $2, description = $3, title = $4
-//     WHERE id = $5
-//     RETURNING *;
-//     `, [external_url, thumbnail_url, description, title, resource_id])
-//   .then(data => {
-//     res.redirect(`/resources/${resource_id}`);
-//   })
-//   .catch(err => {
-//     res.status(500).json({ error: err.message });
-//   });
-// })
-
 router.delete("/:id", (req, res) => {
   const resource_id = req.params.id
   db.query(`
@@ -174,7 +155,6 @@ router.delete("/:id", (req, res) => {
 
 router.post("/:id/comment", (req, res) => {
   const { comment } = req.body
-  console.log(req.body)
   const user_id = req.user.id
   const resource_id = req.params.id
   db.query(`
