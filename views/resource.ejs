@@ -50,15 +50,14 @@
       <label for="4"> 4 </label><br>
     <input type="radio" name="rating" value="5">
      <label for="5"> 5 </label><br> -->
-
-  <button class="btn-primary" value="rating">Rate Me</button>
   </form>
     <script>
 
-    $(".fa-star").on("click", (event) => {
-      const hidden = $('<input>').attr('type', 'hidden').attr('name', 'rating').val($(this).data('review'));
+    $(".fa-star").on("click", function (event) {
+      const hidden = $('<input>').attr('type', 'hidden').attr('name', 'rating').attr('value', $(this).data('review'));
       $('#star_rating').prepend(hidden);
       console.log(hidden);
+      console.log()
       console.log($('#star_rating'));
 
     });
