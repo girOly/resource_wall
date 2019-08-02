@@ -2,7 +2,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top"style="background-color: #e3f2fd;">
   <div class="container">
     <a class="navbar-brand" href="/">
-          <img src="#">
+          <img src="/home.png">
         </a>
         <form method="GET" action="/resources/search" class="form-inline">
           <input name="search" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
@@ -26,6 +26,13 @@
           <li class="nav-item">
             <a class="nav-link" href="/users/my_resources">My Resources</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/users/<%= user.id %>/bookmarked">Bookmarked</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/categories">Categories</a>
+          </li>
+
           <form method="GET" action="/logout">
           <button class="btn btn-danger">Log out</button>
           </form>

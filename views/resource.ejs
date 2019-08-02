@@ -95,15 +95,16 @@ $(this).css( "background-color", "initial" );
   		<label for="comment" class="control-label"></label>
   		<input type="comment" class="form-control"  name="comment" placeholder="">
   		<button type="submit" class="btn btn-primary">Submit</button>
+    </div>
     </form>
-      <section>
+      <section class="comment_text">
       <% for (let comment of resource) { %>
         <% if (comment.content !== null || comment.content !== undefined) { %>
-          <p><%= comment.content %> created by <%= comment.full_name %> </p>
+          <h4 class="comment_Title"> <%= comment.full_name %>  </h4>
+          <p class="text_field"><%= comment.content %> </p>
           <% } %>
           <% } %>
         </section>
-  	</div>
   </div>
 
   </body>

@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
+      <link rel="stylesheet" href="/css/editresource.css">
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <link href="https://fonts.googleapis.com/css?family=Josefin+Sans|Raleway&display=swap" rel="stylesheet">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <meta charset="utf-8">
-    <title> Edit Profile</title>
+    <title> Edit Resource</title>
   </head>
   <body>
-      <% include partials/_header %>
+  <% include partials/_header %>
     <div class="container">
     	<div class="row">
     		<div class="col-md-3 ">
@@ -19,74 +20,40 @@
     		        <div class="card-body">
     		            <div class="row">
     		                <div class="col-md-12">
-    		                    <h4>Your Profile</h4>
-    		                    <hr>
+    		                    <h4>Update your Profile</h4>
+      		                    <hr>
     		                </div>
     		            </div>
     		            <div class="row">
     		                <div class="col-md-12">
-    		                    <form>
+    		                    <form method="POST" action="/users/<%= user.id %>/edit?_method=PUT">
                                   <div class="form-group row">
-                                    <label for="username" class="col-4 col-form-label">User Name*</label>
+                                    <label for="title" class="col-4 col-form-label">Full Name</label>
                                     <div class="col-8">
-                                      <input id="username" name="username" placeholder="Username" class="form-control here" required="required" type="text">
+                                      <input id="full_name" name="full_name" placeholder="Enter your new Resource Title" class="form-control here" type="text">
                                     </div>
                                   </div>
                                   <div class="form-group row">
-                                    <label for="name" class="col-4 col-form-label">First Name</label>
+                                    <label for="email" class="col-4 col-form-label">Email</label>
                                     <div class="col-8">
-                                      <input id="name" name="name" placeholder="First Name" class="form-control here" type="text">
+                                      <input id="email" name="email" placeholder="" class="form-control here" type="email">
                                     </div>
                                   </div>
                                   <div class="form-group row">
-                                    <label for="lastname" class="col-4 col-form-label">Last Name</label>
+                                    <label for="thumbnail_url" class="col-4 col-form-label">Profile Pic</label>
                                     <div class="col-8">
-                                      <input id="lastname" name="lastname" placeholder="Last Name" class="form-control here" type="text">
+                                      <input id="thumbnail_url" name="thumbnail_url" placeholder="Please use *(Copy Image URL)*" class="form-control here" type="url">
                                     </div>
                                   </div>
                                   <div class="form-group row">
-                                    <label for="text" class="col-4 col-form-label">Nick Name*</label>
+                                    <label for="bio" class="col-4 col-form-label">Bio</label>
                                     <div class="col-8">
-                                      <input id="text" name="text" placeholder="Nick Name" class="form-control here" required="required" type="text">
+                                      <textarea id="bio" name="bio" cols="40" rows="4" class="form-control" type="text"></textarea>
                                     </div>
                                   </div>
-                                  <div class="form-group row">
-                                    <label for="select" class="col-4 col-form-label">Display Name public as</label>
-                                    <div class="col-8">
-                                      <select id="select" name="select" class="custom-select">
-                                        <option value="admin">Admin</option>
-                                      </select>
-                                    </div>
-                                  </div>
-                                  <div class="form-group row">
-                                    <label for="email" class="col-4 col-form-label">Email*</label>
-                                    <div class="col-8">
-                                      <input id="email" name="email" placeholder="Email" class="form-control here" required="required" type="text">
-                                    </div>
-                                  </div>
-                                  <div class="form-group row">
-                                    <label for="website" class="col-4 col-form-label">Website</label>
-                                    <div class="col-8">
-                                      <input id="website" name="website" placeholder="website" class="form-control here" type="text">
-                                    </div>
-                                  </div>
-                                  <div class="form-group row">
-                                    <label for="publicinfo" class="col-4 col-form-label">Public Info</label>
-                                    <div class="col-8">
-                                      <textarea id="publicinfo" name="publicinfo" cols="40" rows="4" class="form-control"></textarea>
-                                    </div>
-                                  </div>
-                                  <div class="form-group row">
-                                    <label for="newpass" class="col-4 col-form-label">New Password</label>
-                                    <div class="col-8">
-                                      <input id="newpass" name="newpass" placeholder="New Password" class="form-control here" type="text">
-                                    </div>
-                                  </div>
-                                  <div class="form-group row">
-                                    <div class="offset-4 col-8">
-                                      <button name="submit" type="submit" class="btn btn-primary">Update My Profile</button>
-                                    </div>
-                                  </div>
+                                  <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit">Update Users</button>
+                                </form>
+                              </div>
                                 </form>
     		                </div>
     		            </div>
