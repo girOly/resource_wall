@@ -13,11 +13,6 @@ module.exports = db => {
     FROM users
     WHERE email = $1;
     `, [email])
-      .then(data => {
-      if (data) {
-        res.status(400).json('email already in use, please try another')
-      }
-      })
       .then(db.query(`
       INSERT INTO users (email, password, full_name)
       VALUES ($1, $2, $3)
