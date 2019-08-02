@@ -29,21 +29,35 @@
   </div>
   </section>
   <div class="sub_bar">
-  <button id="bookmark" type="button" class="btn btn-secondary btn-sm"> Bookmark</button>
+    <form action="/resources/<%= resource[0].id %>/bookmarked" method="POST">
+  <button id="bookmark" type="submit" class="btn btn-secondary btn-sm"> Bookmark</button>
+    </form>
     <span class="rating star">
     <form action="/resources/<%= resource[0].id %>/rating" method="POST">
-      <input type="radio" name="rating" value="1">
-        <label for="1"> 1 </label><br>
-      <input type="radio" name="rating" value="2">
-        <label for="2"> 2 </label><br>
-      <input type="radio" name="rating" value="3">
-        <label for="3"> 3 </label><br>
-      <input type="radio" name="rating" value="4">
-        <label for="4"> 4 </label><br>
-      <input type="radio" name="rating" value="5">
-       <label for="5"> 5 </label><br>
+    <!-- <button class="fa fa-star first" value="1"></button>
+    </form>
+    <form>
+    <button class="fa fa-star second" value="2"></button>
+    </form>
+    <button class="fa fa-star third" value="3"></button>
+    <form>
+    <button class="fa fa-star four" value="4"></button>
+    </form>
+    <form>
+    <button class="fa fa-star five" value="5"></button> -->
 
-    <button class="btn-primary" value="rating">Rate Me</button>
+    <input type="radio" name="rating" value="1">
+      <label for="1"> 1 </label><br>
+    <input type="radio" name="rating" value="2">
+      <label for="2"> 2 </label><br>
+    <input type="radio" name="rating" value="3">
+      <label for="3"> 3 </label><br>
+    <input type="radio" name="rating" value="4">
+      <label for="4"> 4 </label><br>
+    <input type="radio" name="rating" value="5">
+     <label for="5"> 5 </label><br>
+
+  <button class="btn-primary" value="rating">Rate Me</button>
   </form>
     <script>
     const yellow = function(){
@@ -54,7 +68,6 @@
   const blank = function(){
   $(this).prevAll().css( "background-color", "initial" );
   $(this).css( "background-color", "initial" );
-
 }
 
 const all = function(){
@@ -81,7 +94,7 @@ $(this).css( "background-color", "initial" );
   	<div class="form-group">
   		<label for="comment" class="control-label"></label>
   		<input type="comment" class="form-control"  name="comment" placeholder="">
-  		<button type="submit" action class="btn btn-primary">Submit</button>
+  		<button type="submit" class="btn btn-primary">Submit</button>
     </form>
       <section>
       <% for (let comment of resource) { %>

@@ -16,10 +16,11 @@
         </container>
     <container class="profile_pic">
     <img src="<%= userData.thumbnail_url %>">
+    <form action="/users/edit" method="GET">
+    <button type="submit" class="btn btn-dark edit">Edit</button>
+  </form>
   </container>
-  <!-- <container class="profile_bio">
-    <p>Here is my bio: <%= userData.bio %></p>
-  </container> -->
+
 </article>
 <container class="profile_bio">
 <p>
