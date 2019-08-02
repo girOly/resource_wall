@@ -6,8 +6,8 @@ router.put("/:id/edit", (req, res) => {
 const profileChanges = req.body
 const updateQuery = `
   UPDATE resources
-  SET thumbnail_url = $1, bio = $2, title = $3
-  WHERE id = $4;
+  SET thumbnail_url = $1, bio = $2, full_name = $3, email = 4$
+  WHERE id = $5;
   `
   db.query(updateQuery, [profileChanges, req.user.id])
   .then(() => {
@@ -37,12 +37,12 @@ router.get("/my_resources", (req, res) => {
 router.get("/edit", (req, res) => {
 const user_id = req.user.id
   db.query(`
-  SELECT thumbnail_url, full_name, bio
+  SELECT thumbnail_url, full_name, bio, email
   FROM users
   WHERE id = $1;
   `, [user_id])
-  .then(() => {
-      res.render("users-edit", { user:req.user })
+  .then((data) => {
+      res.render("users-edit", {profile_info: data.rows[0], user:req.user })
   })
   .catch(err => {
     res

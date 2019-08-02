@@ -57,7 +57,7 @@
 }
 
 .form-group {
-  width: 75%;
+  width: 100%;
 }
 
 body {
@@ -69,9 +69,6 @@ body h1 {
 font-family: 'Josefin Sans', sans-serif;
 }
 
-body * {
-  /* border: 1px solid black; */
-}
 
 .comments  h1 {
   display: flex;
@@ -85,6 +82,10 @@ body * {
   margin-top:10px;
 }
 
+.form-group {
+  display: flex;
+  justify-content: center;
+}
 
 #bookmark {
   display: flex;
@@ -94,4 +95,24 @@ body * {
 .star {
   display: flex;
   justify-content: flex-start;
+
+}
+
+
+.text_field {
+  margin-left: 25%;
+  border: 1px solid black;
+  background-color: rgb(245,245,245);
+  display: flex;
+  justify-content: center;
+  font-size: 25px;
+  max-width: 50%;
+}
+
+.comment_text {
+  border: 3px solid grey;
+}
+
+.comment_Title {
+  margin-left: 25%;
 }
