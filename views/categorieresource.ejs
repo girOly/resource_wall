@@ -10,20 +10,31 @@
   </head>
   <body>
   <% include partials/_header %>
+    <!-- Will be Implemented inside of a Individual Boxes -->
   <section id="resource-container">
-    <% for(let res of category) { %>
+    <% for(let res of allResources) { %>
   <article class ="resource-box">
+          <!-- <h3><%= res.title %></h1>
+          <p><%= res.description %></p>
+          <p><%= res.thumbnail_url %></p>
+            <img src= "<%= res.external_url %>"> -->
             <div class="card-deck">
   <div class="card">
-    <div class="img-background" style = "background-image: url('<%= res.thumbnail_url %>')">
+    <div class="img-background" style = "background-image: url('<%= res.profile_pic %>')">
+    <!-- <img src="<%= res.external_url %>" class="card-img-top"> -->
     </div>
     <div class="card-body">
-      <h5 class="card-title"><%= res.title %></h5>
+      <h4 class="card-title"><%= res.title %></h4>
       <p class="card-text"><%= res.description %></p>
     </div>
     <div class="card-footer">
-      <a class="card-foot" href=" /resources/<%= res.resource_id %>" >View Full Post..</a>
+      <a class="card-foot" href=" /resources/<%= res.res_id %>" >View Full Post..</a>
   </div>
+  <form method="GET" action="/resources/<%= res.res_id %>/edit">
+  <button type="submit" class="btn btn-dark">Edit</button>
+  </form>
+  <form method="POST" action="/resources/<%= res.res_id %>?_method=DELETE">
+    <button type="submit" class="btn btn-danger">Delete</button>
   </form>
   </div>
   </article>
