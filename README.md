@@ -45,9 +45,9 @@ Allow learners to save learning resources like tutorials, blogs and videos in a 
 
 ### Documents
 
--[User Stories](https://github.com/girOly/resource_wall/blob/master/docs/user_stories.md)
--[Database ERD Draft](https://github.com/girOly/resource_wall/blob/master/docs/dbERD.png)
--[HTML Wireframe](https://github.com/girOly/resource_wall/blob/master/docs/HTML%20outline%20v2.png)
+- [User Stories](https://github.com/girOly/resource_wall/blob/master/docs/user_stories.md)
+- [Database ERD Draft](https://github.com/girOly/resource_wall/blob/master/docs/dbERD.png)
+- [HTML Wireframe](https://github.com/girOly/resource_wall/blob/master/docs/HTML%20outline%20v2.png)
 
 ### Built With
 
