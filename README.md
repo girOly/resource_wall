@@ -9,7 +9,7 @@ Allow learners to save learning resources like tutorials, blogs and videos in a 
 
 #### Home Page
 
-![Homepage](https://github.com/girOly/resource_wall/blob/master/docs/Login.png?raw=true)
+![Homepage](https://github.com/girOly/resource_wall/blob/master/docs/Home%20Page.png?raw=true)
 
 #### Organize by Categories
 
