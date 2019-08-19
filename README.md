@@ -1,5 +1,3 @@
-LHL Node Skeleton
-=========
 # Resource Wall
 
 Pinterest for learners.
